@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#FF6B35">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="升本冲刺">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- 内嵌图标 data URI，单文件免外链 -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23FF6B35'/%3E%3Cstop offset='100%25' stop-color='%23C0392B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='96' fill='url(%23g)'/%3E%3Ctext x='256' y='280' font-family='Arial,sans-serif' font-size='260' font-weight='bold' text-anchor='middle' fill='%23fff'%3E升%3C/text%3E%3Ctext x='256' y='420' font-family='Arial,sans-serif' font-size='100' font-weight='bold' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3E本%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23FF6B35'/%3E%3Cstop offset='100%25' stop-color='%23C0392B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='96' fill='url(%23g)'/%3E%3Ctext x='256' y='280' font-family='Arial,sans-serif' font-size='260' font-weight='bold' text-anchor='middle' fill='%23fff'%3E升%3C/text%3E%3Ctext x='256' y='420' font-family='Arial,sans-serif' font-size='100' font-weight='bold' text-anchor='middle' fill='rgba(255,255,255,0.7)'%3E本%3C/text%3E%3C/svg%3E">
+<title>🔥 四川专升本 · AI 每日冲刺计划</title>
+<style>
+  :root {
+    --orange-1: #FF6B35;
+    --orange-2: #F55D3E;
+    --red-1: #E8432B;
+    --red-2: #C0392B;
+    --gold: #FFB347;
+    --gold-light: #FFD700;
+    --bg-gradient: linear-gradient(135deg, #FF6B35 0%, #E8432B 50%, #C0392B 100%);
+    --bg-warm: #FFF8F0;
+    --card-bg: #FFFFFF;
+    --card-shadow: 0 4px 20px rgba(232, 67, 43, 0.10);
+    --card-shadow-hover: 0 8px 32px rgba(232, 67, 43, 0.18);
+    --text-primary: #2D2D2D;
+    --text-secondary: #666;
+    --text-muted: #999;
+    --border-light: #F0E6DC;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-stack);
+    background: var(--bg-warm);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse-glow { 0%,100% { box-shadow:0 0 0 0 rgba(255,107,53,0.4); } 50% { box-shadow:0 0 0 12px rgba(255,107,53,0); } }
+  @keyframes countdown-pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+  @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+  .animate-on-scroll { opacity:0; transform:translateY(30px); transition:opacity 0.6s ease-out,transform 0.6s ease-out; }
+  .animate-on-scroll.visible { opacity:1; transform:translateY(0); }
+
+  .hero {
+    background: var(--bg-gradient); color: #fff; padding: 48px 24px 40px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+    background:radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+    animation: float 8s ease-in-out infinite;
+  }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 60%, rgba(255,248,240,1) 100%); }
+  .hero-content { position:relative; z-index:1; max-width:900px; margin:0 auto; }
+  .hero-title { font-size:clamp(1.8rem,5vw,2.8rem); font-weight:800; letter-spacing:1px; text-shadow:0 2px 12px rgba(0,0,0,0.2); }
+  .hero-sub { font-size:0.88rem; opacity:0.8; margin-top:4px; letter-spacing:1px; }
+  .hero-date { font-size:0.95rem; opacity:0.85; margin-top:8px; letter-spacing:2px; }
+  .hero-stats { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:24px; }
+  .hero-stat { background:rgba(255,255,255,0.18); backdrop-filter:blur(8px); border-radius:var(--radius-sm); padding:10px 18px; min-width:90px; text-align:center; transition:transform 0.2s; }
+  .hero-stat:hover { transform:translateY(-2px); }
+  .hero-stat-num { font-size:1.4rem; font-weight:700; line-height:1.2; }
+  .hero-stat-label { font-size:0.75rem; opacity:0.85; margin-top:2px; }
+
+  .nav-bar {
+    position:sticky; top:0; z-index:100; background:rgba(255,248,240,0.92);
+    backdrop-filter:blur(12px); border-bottom:1px solid var(--border-light);
+    padding:0 16px; display:flex; overflow-x:auto; gap:4px; -webkit-overflow-scrolling:touch;
+  }
+  .nav-bar::-webkit-scrollbar { display:none; }
+  .nav-link {
+    flex-shrink:0; display:inline-flex; align-items:center; gap:6px; padding:14px 16px;
+    font-size:0.88rem; font-weight:500; color:var(--text-secondary); text-decoration:none;
+    border-bottom:2px solid transparent; transition:all 0.2s; white-space:nowrap;
+  }
+  .nav-link:hover, .nav-link.active { color:var(--orange-1); border-bottom-color:var(--orange-1); }
+
+  .phase-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--bg-gradient); color:#fff; padding:5px 14px; border-radius:20px;
+    font-size:0.82rem; font-weight:600; letter-spacing:0.5px;
+  }
+
+  .container { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
+  .section { margin-bottom:40px; }
+  .section-header {
+    display:flex; align-items:center; gap:12px; margin-bottom:20px;
+    padding-bottom:12px; border-bottom:2px solid var(--border-light);
+  }
+  .section-icon { width:36px; height:36px; border-radius:50%; background:var(--bg-gradient); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .section-title { font-size:1.3rem; font-weight:700; color:var(--text-primary); }
+  .section-count { margin-left:auto; font-size:0.82rem; color:var(--text-muted); background:var(--bg-warm); padding:4px 12px; border-radius:20px; border:1px solid var(--border-light); }
+
+  .card-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+  @media (min-width:640px) { .card-grid { grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:960px) { .card-grid.grid-3 { grid-template-columns:repeat(3,1fr); } }
+
+  .card {
+    background:var(--card-bg); border-radius:var(--radius-md);
+    box-shadow:var(--card-shadow); padding:20px;
+    transition:all 0.3s ease; border:1px solid transparent; position:relative;
+  }
+  .card:hover { box-shadow:var(--card-shadow-hover); transform:translateY(-3px); border-color:var(--gold-light); }
+  .card.completed { border-left:4px solid #27AE60; background:linear-gradient(135deg,#F0FFF4,#fff); }
+  .card.completed .card-check-btn { background:#27AE60; color:#fff; border-color:#27AE60; }
+
+  .card-num {
+    position:absolute; top:12px; right:12px; width:26px; height:26px; border-radius:50%;
+    background:var(--bg-gradient); color:#fff; font-size:0.78rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card-subject {
+    display:inline-block; font-size:0.72rem; font-weight:600; padding:3px 10px;
+    border-radius:20px; margin-bottom:6px; letter-spacing:0.5px;
+  }
+  .card-subject.math { background:#FFF0E0; color:#D35400; }
+  .card-subject.comp { background:#E8F4FD; color:#2980B9; }
+  .card-subject.eng  { background:#F0E6FF; color:#8E44AD; }
+
+  .card-chapter {
+    display:inline-block; font-size:0.7rem; color:var(--text-muted);
+    background:var(--bg-warm); padding:2px 8px; border-radius:10px; margin-left:6px;
+  }
+  .card-title { font-size:1.02rem; font-weight:600; margin-bottom:6px; padding-right:32px; }
+  .card-desc { font-size:0.88rem; color:var(--text-secondary); line-height:1.5; margin-bottom:12px; }
+  .card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:10px; border-top:1px solid var(--border-light); }
+  .card-time { font-size:0.82rem; color:var(--text-muted); display:flex; align-items:center; gap:4px; }
+  .card-check-btn {
+    padding:6px 16px; border:2px solid var(--orange-1); border-radius:20px;
+    background:transparent; color:var(--orange-1); font-size:0.82rem; font-weight:600;
+    cursor:pointer; transition:all 0.25s;
+  }
+  .card-check-btn:hover { background:var(--orange-1); color:#fff; }
+  .card-check-btn.done { background:#27AE60; border-color:#27AE60; color:#fff; }
+  .card-check-btn.done:hover { background:#219A52; }
+
+  .time-summary { display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:20px; }
+  @media (min-width:640px) { .time-summary { grid-template-columns:repeat(3,1fr); } }
+  .time-card {
+    background:var(--card-bg); border-radius:var(--radius-md); box-shadow:var(--card-shadow);
+    padding:20px; text-align:center; border-top:3px solid var(--orange-1);
+  }
+  .time-card.math { border-top-color:#D35400; }
+  .time-card.comp { border-top-color:#2980B9; }
+  .time-card.eng  { border-top-color:#8E44AD; }
+  .time-card-label { font-size:0.85rem; color:var(--text-secondary); margin-bottom:4px; }
+  .time-card-value { font-size:2rem; font-weight:700; }
+  .time-card-value.math { color:#D35400; }
+  .time-card-value.comp { color:#2980B9; }
+  .time-card-value.eng  { color:#8E44AD; }
+  .time-total-bar {
+    background:var(--card-bg); border-radius:var(--radius-md); box-shadow:var(--card-shadow);
+    padding:20px 24px; display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:12px; border:2px solid var(--gold);
+  }
+  .time-total-label { font-size:1rem; font-weight:600; display:flex; align-items:center; gap:8px; }
+  .time-total-value { font-size:1.8rem; font-weight:800; color:var(--orange-1); }
+  .time-total-progress { flex:1; min-width:120px; height:8px; background:var(--border-light); border-radius:4px; overflow:hidden; }
+  .time-total-fill { height:100%; background:var(--bg-gradient); border-radius:4px; transition:width 0.6s ease; }
+
+  .resource-card {
+    background:var(--card-bg); border-radius:var(--radius-md); box-shadow:var(--card-shadow);
+    padding:20px; transition:all 0.3s; border-left:4px solid var(--orange-1);
+  }
+  .resource-card.math { border-left-color:#D35400; }
+  .resource-card.comp { border-left-color:#2980B9; }
+  .resource-card.eng  { border-left-color:#8E44AD; }
+  .resource-card:hover { box-shadow:var(--card-shadow-hover); transform:translateY(-2px); }
+  .resource-subject { font-size:0.72rem; font-weight:600; padding:3px 10px; border-radius:20px; display:inline-block; margin-bottom:8px; }
+  .resource-subject.math { background:#FFF0E0; color:#D35400; }
+  .resource-subject.comp { background:#E8F4FD; color:#2980B9; }
+  .resource-subject.eng  { background:#F0E6FF; color:#8E44AD; }
+  .resource-title { font-size:0.98rem; font-weight:600; margin-bottom:6px; }
+  .resource-desc { font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px; line-height:1.5; }
+  .resource-link { display:inline-flex; align-items:center; gap:6px; padding:7px 16px; background:var(--orange-1); color:#fff; text-decoration:none; border-radius:20px; font-size:0.82rem; font-weight:500; transition:background 0.2s; }
+  .resource-link:hover { background:var(--red-1); }
+  .resource-link.external { background:var(--text-secondary); }
+  .resource-link.external:hover { background:var(--text-primary); }
+
+  .syllabus-progress {
+    background:var(--card-bg); border-radius:var(--radius-md); box-shadow:var(--card-shadow);
+    padding:16px 20px; margin-bottom:20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  .syllabus-progress-bar { flex:1; min-width:100px; height:6px; background:var(--border-light); border-radius:3px; overflow:hidden; }
+  .syllabus-progress-fill { height:100%; border-radius:3px; transition:width 0.5s ease; }
+  .syllabus-progress-label { font-size:0.82rem; color:var(--text-muted); white-space:nowrap; }
+
+  .countdown-section {
+    text-align:center; padding:40px 20px; background:var(--card-bg);
+    border-radius:var(--radius-lg); box-shadow:var(--card-shadow);
+    border:2px solid var(--gold-light); position:relative; overflow:hidden;
+  }
+  .countdown-section::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--bg-gradient); }
+  .countdown-title { font-size:1.2rem; font-weight:700; margin-bottom:20px; color:var(--text-primary); }
+  .countdown-title span { color:var(--orange-1); }
+  .countdown-exam-info { font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px; }
+  .countdown-exam-info strong { color:var(--text-primary); }
+  .countdown-display { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+  .countdown-block { background:var(--bg-gradient); border-radius:var(--radius-md); padding:16px 24px; min-width:90px; color:#fff; animation:countdown-pulse 2s ease-in-out infinite; }
+  .countdown-block:nth-child(2) { animation-delay:0.3s; }
+  .countdown-block:nth-child(3) { animation-delay:0.6s; }
+  .countdown-block:nth-child(4) { animation-delay:0.9s; }
+  .countdown-num { font-size:2.4rem; font-weight:800; line-height:1.1; }
+  .countdown-label { font-size:0.78rem; opacity:0.85; margin-top:4px; }
+  .countdown-motivation { margin-top:24px; font-size:1.05rem; font-weight:500; color:var(--orange-1); }
+
+  .mood-container { background:var(--card-bg); border-radius:var(--radius-lg); box-shadow:var(--card-shadow); padding:28px; }
+  .mood-zone { text-align:center; margin-bottom:24px; }
+  .mood-question { font-size:1.05rem; font-weight:600; margin-bottom:14px; }
+  .mood-selector { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+  .mood-btn { font-size:2rem; width:56px; height:56px; border-radius:50%; border:3px solid transparent; background:var(--bg-warm); cursor:pointer; transition:all 0.25s; display:flex; align-items:center; justify-content:center; }
+  .mood-btn:hover { transform:scale(1.15); border-color:var(--gold-light); }
+  .mood-btn.selected { border-color:var(--orange-1); background:rgba(255,107,53,0.1); transform:scale(1.1); animation:pulse-glow 1s ease-in-out; }
+  .mood-textarea { width:100%; min-height:90px; padding:14px; border:2px solid var(--border-light); border-radius:var(--radius-sm); font-family:var(--font-stack); font-size:0.92rem; resize:vertical; transition:border-color 0.2s; outline:none; }
+  .mood-textarea:focus { border-color:var(--orange-1); }
+  .mood-save-area { display:flex; justify-content:flex-end; gap:10px; margin-bottom:24px; }
+  .mood-save-btn { padding:9px 24px; background:var(--bg-gradient); color:#fff; border:none; border-radius:20px; font-size:0.88rem; font-weight:600; cursor:pointer; transition:opacity 0.2s; }
+  .mood-save-btn:hover { opacity:0.9; }
+  .mood-clear-btn { padding:9px 20px; background:transparent; color:var(--text-muted); border:1px solid var(--border-light); border-radius:20px; font-size:0.88rem; cursor:pointer; transition:all 0.2s; }
+  .mood-clear-btn:hover { border-color:var(--red-2); color:var(--red-2); }
+  .journal-list { border-top:1px solid var(--border-light); padding-top:16px; }
+  .journal-entry { padding:12px 0; border-bottom:1px solid var(--border-light); font-size:0.88rem; }
+  .journal-entry:last-child { border-bottom:none; }
+  .journal-entry-header { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+  .journal-entry-mood { font-size:1.2rem; }
+  .journal-entry-date { font-size:0.78rem; color:var(--text-muted); }
+  .journal-entry-text { color:var(--text-secondary); line-height:1.5; }
+  .journal-empty { text-align:center; padding:24px; color:var(--text-muted); font-size:0.92rem; }
+
+  .footer { text-align:center; padding:24px 20px; font-size:0.8rem; color:var(--text-muted); border-top:1px solid var(--border-light); }
+  .footer span { color:var(--orange-1); font-weight:600; }
+
+  .toast {
+    position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px);
+    background:#333; color:#fff; padding:10px 24px; border-radius:24px;
+    font-size:0.88rem; z-index:999; opacity:0; transition:all 0.4s ease; pointer-events:none; white-space:nowrap;
+  }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+  @media (max-width:480px) {
+    .hero { padding:32px 16px 28px; }
+    .hero-stats { gap:8px; }
+    .hero-stat { min-width:70px; padding:8px 12px; }
+    .hero-stat-num { font-size:1.1rem; }
+    .nav-link { padding:12px 10px; font-size:0.8rem; }
+    .countdown-block { min-width:70px; padding:12px 16px; }
+    .countdown-num { font-size:1.8rem; }
+    .time-total-bar { flex-direction:column; text-align:center; }
+  }
+
+  /* ===== Quiz Section ===== */
+  .quiz-progress { display:flex; gap:6px; margin-bottom:20px; justify-content:center; }
+  .quiz-dot { width:28px; height:28px; border-radius:50%; border:2px solid var(--border-light); background:var(--card-bg); display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:600; color:var(--text-muted); transition:all 0.3s; }
+  .quiz-dot.active { border-color:var(--orange-1); background:var(--orange-1); color:#fff; transform:scale(1.1); }
+  .quiz-dot.correct { border-color:#27AE60; background:#27AE60; color:#fff; }
+  .quiz-dot.wrong { border-color:#E74C3C; background:#E74C3C; color:#fff; }
+
+  .quiz-card { background:var(--card-bg); border-radius:var(--radius-lg); box-shadow:var(--card-shadow); padding:28px; border:1px solid var(--border-light); }
+  .quiz-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .quiz-subject { font-size:0.78rem; font-weight:600; padding:3px 12px; border-radius:20px; }
+  .quiz-subject.math { background:#FFF0E0; color:#D35400; }
+  .quiz-subject.comp { background:#E8F4FD; color:#2980B9; }
+  .quiz-subject.eng  { background:#F0E6FF; color:#8E44AD; }
+  .quiz-chapter { font-size:0.75rem; color:var(--text-muted); }
+  .quiz-question { font-size:1.05rem; font-weight:600; line-height:1.6; margin-bottom:20px; }
+  .quiz-options { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+  .quiz-option {
+    padding:14px 18px; border:2px solid var(--border-light); border-radius:var(--radius-sm);
+    background:var(--card-bg); cursor:pointer; transition:all 0.2s;
+    font-size:0.92rem; line-height:1.5; text-align:left;
+  }
+  .quiz-option:hover { border-color:var(--orange-1); background:rgba(255,107,53,0.04); }
+  .quiz-option.selected { border-color:var(--orange-1); background:rgba(255,107,53,0.08); }
+  .quiz-option.correct-answer { border-color:#27AE60; background:rgba(39,174,96,0.08); }
+  .quiz-option.wrong-answer { border-color:#E74C3C; background:rgba(231,76,60,0.08); }
+  .quiz-option.disabled { pointer-events:none; }
+
+  .quiz-feedback { padding:14px 18px; border-radius:var(--radius-sm); margin-bottom:16px; font-size:0.9rem; line-height:1.5; display:none; }
+  .quiz-feedback.correct { display:block; background:rgba(39,174,96,0.08); border:1px solid rgba(39,174,96,0.3); color:#1E8449; }
+  .quiz-feedback.wrong { display:block; background:rgba(231,76,60,0.08); border:1px solid rgba(231,76,60,0.3); color:#C0392B; }
+
+  .quiz-actions { display:flex; gap:12px; justify-content:flex-end; }
+  .quiz-btn { padding:10px 28px; border-radius:20px; font-size:0.9rem; font-weight:600; cursor:pointer; transition:all 0.2s; border:none; }
+  .quiz-btn-primary { background:var(--bg-gradient); color:#fff; }
+  .quiz-btn-primary:hover { opacity:0.9; }
+  .quiz-btn-primary:disabled { opacity:0.4; cursor:not-allowed; }
+  .quiz-btn-secondary { background:var(--bg-warm); color:var(--text-secondary); border:1px solid var(--border-light); }
+  .quiz-btn-secondary:hover { border-color:var(--orange-1); color:var(--orange-1); }
+
+  .quiz-result {
+    text-align:center; padding:40px 20px;
+  }
+  .quiz-result-score { font-size:3.5rem; font-weight:800; background:var(--bg-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .quiz-result-label { font-size:1.1rem; color:var(--text-secondary); margin-top:8px; }
+  .quiz-result-detail { font-size:0.88rem; color:var(--text-muted); margin-top:12px; }
+  .quiz-empty { text-align:center; padding:40px; color:var(--text-muted); font-size:0.95rem; }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-title">🔥 四川专升本 · AI 每日冲刺计划</div>
+    <div class="hero-sub">高等数学 150′ · 大学英语 150′ · 计算机基础 150′</div>
+    <div class="hero-date" id="heroDate"></div>
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat"><div class="hero-stat-num" id="statTotal">0</div><div class="hero-stat-label">今日计划</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="statCompleted">0</div><div class="hero-stat-label">已完成</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="statTime">0</div><div class="hero-stat-label">预计分钟</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="statDays">0</div><div class="hero-stat-label">剩余天数</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="statDayNum">0</div><div class="hero-stat-label">学习第N天</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-bar" id="navBar">
+  <a class="nav-link active" href="#section-today">📋 今日计划</a>
+  <a class="nav-link" href="#section-time">⏱ 时间预计</a>
+  <a class="nav-link" href="#section-resource">📚 学习资源</a>
+  <a class="nav-link" href="#section-quiz">✏️ 今日练习</a>
+  <a class="nav-link" href="#section-countdown">⏳ 倒计时</a>
+  <a class="nav-link" href="#section-mood">😊 每日心情</a>
+</nav>
+
+<div class="container">
+
+  <section class="section animate-on-scroll" id="section-today">
+    <div class="section-header">
+      <div class="section-icon">📋</div>
+      <h2 class="section-title">今日计划</h2>
+      <span class="phase-badge" id="phaseBadge">📖 第 1 轮复习</span>
+      <span class="section-count" id="todayCount">共 0 项</span>
+    </div>
+    <div class="card-grid" id="planGrid"></div>
+  </section>
+
+  <section class="section animate-on-scroll" id="section-time">
+    <div class="section-header">
+      <div class="section-icon">⏱</div>
+      <h2 class="section-title">时间预计</h2>
+      <span class="section-count" id="timeCount">≥ 2 小时 / 天</span>
+    </div>
+    <div class="time-summary" id="timeSummary"></div>
+    <div class="time-total-bar">
+      <div class="time-total-label">📊 今日总学习时长</div>
+      <div class="time-total-value" id="totalTimeValue">0 分钟</div>
+      <div class="time-total-progress">
+        <div class="time-total-fill" id="totalTimeFill" style="width:0%"></div>
+      </div>
+    </div>
+    <!-- 复习计划预览 -->
+    <div id="reviewPlanPreview" style="margin-top:16px;">
+      <div style="font-size:0.88rem;font-weight:600;color:var(--text-secondary);margin-bottom:10px;">📅 复习路线图</div>
+    </div>
+  </section>
+
+  <section class="section animate-on-scroll" id="section-resource">
+    <div class="section-header">
+      <div class="section-icon">📚</div>
+      <h2 class="section-title">学习资源</h2>
+      <span class="section-count">推荐汇总</span>
+    </div>
+    <div class="card-grid grid-3" id="resourceGrid"></div>
+  </section>
+
+  <!-- ===== SECTION 4: 今日练习 ===== -->
+  <section class="section animate-on-scroll" id="section-quiz">
+    <div class="section-header">
+      <div class="section-icon">✏️</div>
+      <h2 class="section-title">今日练习</h2>
+      <span class="section-count" id="quizCount">共 0 题</span>
+    </div>
+    <div id="quizContainer"></div>
+  </section>
+
+  <section class="section animate-on-scroll" id="section-countdown">
+    <div class="section-header">
+      <div class="section-icon">⏳</div>
+      <h2 class="section-title">距离专升本考试</h2>
+      <span class="section-count" id="examDateLabel"></span>
+    </div>
+    <div class="countdown-section" id="countdownSection">
+      <div class="countdown-title">距 <span>2027 年四川专升本考试</span> 还有</div>
+      <div class="countdown-exam-info">
+        🎯 <strong>高等数学</strong> 150分 120′ &nbsp;·&nbsp; <strong>大学英语</strong> 150分 120′ &nbsp;·&nbsp; <strong>计算机基础</strong> 150分 120′
+      </div>
+      <div class="countdown-display" id="countdownDisplay">
+        <div class="countdown-block"><div class="countdown-num" id="cdDays">0</div><div class="countdown-label">天</div></div>
+        <div class="countdown-block"><div class="countdown-num" id="cdHours">0</div><div class="countdown-label">小时</div></div>
+        <div class="countdown-block"><div class="countdown-num" id="cdMins">0</div><div class="countdown-label">分钟</div></div>
+        <div class="countdown-block"><div class="countdown-num" id="cdSecs">0</div><div class="countdown-label">秒</div></div>
+      </div>
+      <div class="countdown-motivation" id="countdownMotivation">💪 今天的努力，是明天上岸的底气！</div>
+    </div>
+  </section>
+
+  <section class="section animate-on-scroll" id="section-mood">
+    <div class="section-header">
+      <div class="section-icon">😊</div>
+      <h2 class="section-title">每日心情 &amp; 学习日记</h2>
+      <span class="section-count" id="moodCount">记录</span>
+    </div>
+    <div class="mood-container">
+      <div class="mood-zone">
+        <div class="mood-question">今天学习状态怎么样？</div>
+        <div class="mood-selector" id="moodSelector">
+          <button class="mood-btn" data-mood="😊" title="超棒">😊</button>
+          <button class="mood-btn" data-mood="🙂" title="不错">🙂</button>
+          <button class="mood-btn" data-mood="😐" title="一般">😐</button>
+          <button class="mood-btn" data-mood="😔" title="有点累">😔</button>
+          <button class="mood-btn" data-mood="😤" title="烦躁">😤</button>
+        </div>
+      </div>
+      <div class="mood-input-area">
+        <textarea class="mood-textarea" id="journalText" placeholder="记录今天的学习心得、难点或感悟……" rows="3"></textarea>
+      </div>
+      <div class="mood-save-area">
+        <button class="mood-clear-btn" id="clearMoodBtn">🗑 清空</button>
+        <button class="mood-save-btn" id="saveMoodBtn">💾 保存记录</button>
+      </div>
+      <div class="journal-list" id="journalList">
+        <div class="journal-empty">还没有记录，开始你的第一篇学习日记吧 ✍️</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  今日共 <span id="footerTotal">0</span> 项学习计划 &nbsp;·&nbsp; 考纲依据四川省专升本考试说明 &nbsp;·&nbsp; 每日更新 🌅
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ============================================================
+     CONFIG
+  ============================================================ */
+  const EXAM_DATE = new Date('2027-04-15T09:00:00+08:00');
+  const COURSE_START = new Date('2026-06-18T00:00:00+08:00'); // 今天=Day 1
+  const STORAGE_KEY_CHECKIN = 'zsb_checkin_';
+  const STORAGE_KEY_JOURNAL = 'zsb_journal';
+
+  const MOTIVATIONS = [
+    '💪 今天的努力，是明天上岸的底气！','🎯 每多刷一道题，就离本科更近一步！',
+    '🔥 乾坤未定，你我皆是黑马！','📚 专升本不是终点，是新的起点！',
+    '⭐ 坚持到最后的人，运气都不会太差！','🚀 自律即自由，上岸即光明！',
+    '🌈 熬过无人问津的日子，才有诗和远方！','🏆 别让未来的你，讨厌现在不努力的自己。',
+    '💡 每天进步 1%，一年后强大 37 倍！','🎉 考得上！来得及！你可以！',
+  ];
+
+  /* ============================================================
+     OFFICIAL SYLLABUS — 四川专升本 2027
+    高等数学: 150分 120′  大学英语: 150分 120′  计算机基础: 150分 120′
+  ============================================================ */
+
+  // ==================== 高等数学 (64 topics, ~80% score) ====================
+  const MATH_CURRICULUM = [
+    // ---- 第1章 函数、极限与连续 ----
+    { chap:'第1章', topic:'函数的概念与性质', desc:'定义域、值域、奇偶性、周期性、有界性——四大基本性质必须熟练掌握' },
+    { chap:'第1章', topic:'反函数与复合函数', desc:'反函数存在条件、复合函数的分解与合成、定义域确定方法' },
+    { chap:'第1章', topic:'基本初等函数与初等函数', desc:'幂/指/对/三角/反三角函数的图像与性质，初等函数概念' },
+    { chap:'第1章', topic:'数列极限与函数极限的概念', desc:'ε-N定义、ε-δ定义理解，左右极限与极限存在条件' },
+    { chap:'第1章', topic:'极限的四则运算法则', desc:'极限加减乘除运算、复合运算法则、直接代入法与有理化' },
+    { chap:'第1章', topic:'两个重要极限', desc:'lim sinx/x=1 与 lim(1+1/x)^x=e 及其变形公式' },
+    { chap:'第1章', topic:'无穷小与无穷大、等价无穷小代换', desc:'高阶/同阶/等价无穷小、常用等价代换（x~sinx~tanx~arcsinx）' },
+    { chap:'第1章', topic:'函数的连续性概念与间断点分类', desc:'连续定义、跳跃/可去/无穷/振荡间断点分类判断' },
+    { chap:'第1章', topic:'闭区间上连续函数的性质', desc:'最值定理（有界性与最值）、介值定理与零点定理应用' },
+
+    // ---- 第2章 一元函数微分学 ----
+    { chap:'第2章', topic:'导数的概念与几何意义', desc:'导数定义、左/右导数、可导与连续关系、切线方程求法' },
+    { chap:'第2章', topic:'基本求导公式与四则运算法则', desc:'常数/幂/指/对/三角函数的导数公式，和差积商的求导' },
+    { chap:'第2章', topic:'复合函数求导（链式法则）', desc:'由外到内逐层求导、多层复合函数求导技巧' },
+    { chap:'第2章', topic:'隐函数求导与参数方程求导', desc:'隐函数两边求导法、参数方程一阶/二阶导数公式' },
+    { chap:'第2章', topic:'高阶导数', desc:'二阶及以上导数计算、莱布尼茨公式、常见函数n阶导数公式' },
+    { chap:'第2章', topic:'微分中值定理', desc:'罗尔定理、拉格朗日中值定理条件与结论、辅助函数构造' },
+    { chap:'第2章', topic:'洛必达法则求极限', desc:'0/0与∞/∞型应用条件、洛必达与等价代换结合使用' },
+    { chap:'第2章', topic:'函数的单调性与极值', desc:'导数判定单调性、极值点判定（一阶/二阶导数法）' },
+    { chap:'第2章', topic:'曲线的凹凸性与拐点', desc:'二阶导数判定凹凸性、拐点求法（f\'\'(x)=0或不存在处）' },
+    { chap:'第2章', topic:'函数的最值及其应用', desc:'闭区间最值求法、实际优化问题建模求解' },
+
+    // ---- 第3章 一元函数积分学 ----
+    { chap:'第3章', topic:'原函数与不定积分的概念', desc:'原函数定义、不定积分几何意义、积分与微分关系' },
+    { chap:'第3章', topic:'不定积分的基本公式与性质', desc:'基本积分表、线性性质、直接积分法' },
+    { chap:'第3章', topic:'换元积分法（第一类、第二类）', desc:'第一类凑微分法、第二类根式/三角代换（sin/cos/tan代换）' },
+    { chap:'第3章', topic:'分部积分法', desc:'反对幂指三优先顺序、分部积分公式 u·v - ∫v·du 的应用' },
+    { chap:'第3章', topic:'定积分的概念与性质', desc:'定积分定义（黎曼和）、几何意义、估值定理与积分中值定理' },
+    { chap:'第3章', topic:'牛顿-莱布尼茨公式', desc:'微积分基本定理、变上限积分求导公式（微积分基本定理）' },
+    { chap:'第3章', topic:'定积分的换元法与分部法', desc:'定积分换元需换限、分部积分在定积分中的应用' },
+    { chap:'第3章', topic:'定积分的应用（面积、体积、弧长）', desc:'平面图形面积、旋转体体积（圆盘法/壳法）、曲线弧长公式' },
+    { chap:'第3章', topic:'广义积分（无穷限积分、瑕积分）', desc:'无穷限收敛性判断与计算、瑕积分的瑕点识别与收敛判定' },
+
+    // ---- 第4章 向量代数与空间解析几何 ----
+    { chap:'第4章', topic:'空间直角坐标系', desc:'右手系坐标、点坐标表示、空间两点距离公式、中点坐标' },
+    { chap:'第4章', topic:'向量的概念与线性运算', desc:'向量的模与方向余弦、加法与数乘、向量的坐标表示' },
+    { chap:'第4章', topic:'向量的数量积与向量积', desc:'点积定义及投影、叉积定义及几何意义（面积）、混合积' },
+    { chap:'第4章', topic:'平面方程（点法式、一般式）', desc:'点法式方程、一般式Ax+By+Cz+D=0、平面的截距式' },
+    { chap:'第4章', topic:'直线方程（点向式、参数式）', desc:'点向式、参数式、一般式、直线方向向量的求法' },
+    { chap:'第4章', topic:'平面与直线的位置关系', desc:'点面距、线面夹角、面面夹角、直线与平面的交点判断' },
+
+    // ---- 第5章 多元函数微分学与二重积分 ----
+    { chap:'第5章', topic:'多元函数的概念', desc:'二元函数定义域、极限概念、连续性与偏导数存在关系' },
+    { chap:'第5章', topic:'偏导数与全微分', desc:'一阶/二阶偏导数计算、全微分公式dz=fx·dx+fy·dy' },
+    { chap:'第5章', topic:'复合函数与隐函数的偏导数', desc:'链式法则求多元复合偏导、隐函数偏导公式法' },
+    { chap:'第5章', topic:'多元函数的极值与条件极值', desc:'无条件极值（AC-B²判定）、拉格朗日乘数法求条件极值' },
+    { chap:'第5章', topic:'二重积分的概念与性质', desc:'二重积分定义（曲顶柱体体积）、性质（线性/可加/比较）' },
+    { chap:'第5章', topic:'直角坐标系下二重积分的计算', desc:'X型与Y型区域划分、累次积分次序选择与交换积分次序' },
+    { chap:'第5章', topic:'极坐标系下二重积分的计算', desc:'极坐标变换公式、圆域/环域/扇形区域的积分计算' },
+
+    // ---- 第6章 无穷级数 ----
+    { chap:'第6章', topic:'常数项级数的概念与性质', desc:'级数收敛/发散定义、部分和、收敛必要条件、线性性质' },
+    { chap:'第6章', topic:'正项级数的审敛法', desc:'比较审敛法（与p-级数/几何级数比较）、比值审敛法（达朗贝尔）' },
+    { chap:'第6章', topic:'交错级数与莱布尼茨审敛法', desc:'交错级数定义、莱布尼茨审敛条件、绝对收敛与条件收敛' },
+    { chap:'第6章', topic:'幂级数的收敛半径与收敛域', desc:'阿贝尔定理、收敛半径求法（比值/根值法）、端点收敛性检验' },
+    { chap:'第6章', topic:'函数的幂级数展开', desc:'麦克劳林级数展开（e^x/sinx/cosx/ln(1+x)/1/(1-x)）' },
+
+    // ---- 第7章 常微分方程 ----
+    { chap:'第7章', topic:'微分方程的基本概念', desc:'阶/解/通解/特解/初始条件、积分曲线的理解' },
+    { chap:'第7章', topic:'可分离变量的微分方程', desc:'分离变量法、两端积分求通解' },
+    { chap:'第7章', topic:'一阶线性微分方程', desc:'y\'+P(x)y=Q(x)的通解公式（常数变易法）' },
+    { chap:'第7章', topic:'二阶常系数线性微分方程', desc:'齐次方程特征根法求通解、非齐次特解形式（待定系数法）' },
+
+    // ---- 第8章 行列式（线性代数~20%） ----
+    { chap:'第8章', topic:'行列式的定义与性质', desc:'二阶/三阶行列式对角线法、n阶行列式定义、性质（转置/互换/数乘）' },
+    { chap:'第8章', topic:'行列式的展开计算（拉普拉斯展开）', desc:'代数余子式、按行/按列展开、降阶法计算n阶行列式' },
+    { chap:'第8章', topic:'克莱姆法则', desc:'克莱姆法则解决数方程组的条件与公式、齐次方程非零解判定' },
+
+    // ---- 第9章 矩阵 ----
+    { chap:'第9章', topic:'矩阵的概念与运算', desc:'矩阵定义、加减法、数乘、矩阵乘法（需满足列数=行数）' },
+    { chap:'第9章', topic:'特殊矩阵', desc:'单位矩阵E、对角矩阵∧、对称矩阵A^T=A、上/下三角矩阵' },
+    { chap:'第9章', topic:'矩阵的逆', desc:'逆矩阵定义、伴随矩阵法求逆、逆矩阵性质（AB逆=B逆A逆）' },
+    { chap:'第9章', topic:'矩阵的秩', desc:'秩的定义（最高阶非零子式阶数）、初等变换求秩' },
+    { chap:'第9章', topic:'矩阵的初等变换', desc:'三种初等行/列变换、行阶梯形矩阵、行最简形（简化阶梯形）' },
+
+    // ---- 第10章 向量 ----
+    { chap:'第10章', topic:'向量的概念与线性运算', desc:'n维向量定义、线性组合与线性表示、向量组等价' },
+    { chap:'第10章', topic:'向量组的线性相关性', desc:'线性相关/无关定义与判定（齐次方程非零解法）' },
+    { chap:'第10章', topic:'向量组的极大无关组与秩', desc:'极大线性无关组的求法（初等行变换法）、向量组秩与矩阵秩关系' },
+
+    // ---- 第11章 线性方程组 ----
+    { chap:'第11章', topic:'线性方程组解的存在性判定', desc:'系数矩阵与增广矩阵秩的关系、无解/唯一解/无穷多解的判定' },
+    { chap:'第11章', topic:'齐次线性方程组的基础解系与通解', desc:'自由未知量选取、基础解系构造、通解表示' },
+    { chap:'第11章', topic:'非齐次线性方程组的结构解', desc:'特解+齐次通解的结构形式、解的唯一性条件' },
+  ];
+
+  // ==================== 大学英语 (32 topics) ====================
+  const ENG_CURRICULUM = [
+    { chap:'词汇', topic:'核心动词分类记忆', desc:'高频动词（get/take/make/do/have等）搭配与辨析、动词短语汇总' },
+    { chap:'词汇', topic:'核心名词与形容词', desc:'抽象名词、可数与不可数名词区分、常用形容词辨析（big/large/great）' },
+    { chap:'词汇', topic:'常用短语与固定搭配（一）', desc:'介词短语（in/on/at/to/for）、动词+介词搭配（depend on/look for等）' },
+    { chap:'词汇', topic:'常用短语与固定搭配（二）', desc:'形容词+介词（be interested in/famous for等）、固定句型（it is...that）' },
+    { chap:'词汇', topic:'词根词缀记忆法', desc:'常见前缀（un-/re-/pre-/dis-）、后缀（-tion/-ment/-ly/-able）记忆技巧' },
+    { chap:'语法', topic:'九大词性概述', desc:'名/动/形/副/代/数/冠/介/连词的分类与功能、词性转换规则' },
+    { chap:'语法', topic:'十二种时态（一）', desc:'一般时（现在/过去/将来/过去将来）与进行时（现在/过去/将来）的结构与用法' },
+    { chap:'语法', topic:'十二种时态（二）', desc:'完成时（现在/过去/将来/现在完成进行/过去完成进行）的用法与区别' },
+    { chap:'语法', topic:'四大句子种类与主谓一致', desc:'陈述/疑问/祈使/感叹句、主谓一致三原则（语法/意义/就近原则）' },
+    { chap:'语法', topic:'被动语态', desc:'各种时态的被动结构、情态动词的被动语态、get型被动' },
+    { chap:'语法', topic:'非谓语动词（一）：动词不定式', desc:'不定式作主语/宾语/定语/状语/宾补、不定式的时态与语态' },
+    { chap:'语法', topic:'非谓语动词（二）：动名词与分词', desc:'doing与to do区别、现在分词与过去分词区别、独立主格结构' },
+    { chap:'语法', topic:'定语从句', desc:'关系代词（who/whom/which/that/whose）与关系副词（when/where/why）' },
+    { chap:'语法', topic:'名词性从句', desc:'主语/宾语/表语/同位语从句引导词（that/whether/what等）及语序' },
+    { chap:'语法', topic:'状语从句', desc:'时间/原因/条件/让步/目的/结果/比较/方式状语从句引导词与用法' },
+    { chap:'语法', topic:'虚拟语气', desc:'if条件虚拟（与现在/过去/将来相反）、wish/as if/建议类从句虚拟' },
+    { chap:'语法', topic:'倒装句与强调句', desc:'完全倒装（here/there句）与部分倒装（否定词句首/only+状语）、It is...that强调' },
+    { chap:'语法', topic:'并列复合句与从属复合句', desc:'并列连词（and/but/or/so）与从属连词（because/although/if等）综合运用' },
+    { chap:'阅读', topic:'阅读理解题型总览', desc:'主旨大意题、细节理解题、词义猜测题、推理判断题、观点态度题解题技巧' },
+    { chap:'阅读', topic:'选句填空（七选五）', desc:'语篇衔接手段（指代/连接/词汇衔接）、上下文逻辑推理技巧' },
+    { chap:'完形', topic:'完形填空解题技巧', desc:'上下文逻辑推理、固定搭配识别、词义辨析在完形中的应用' },
+    { chap:'改错', topic:'短文改错常见错误类型', desc:'词法错误（冠词/名词/代词/介词）、句法错误（时态/语态/非谓语）' },
+    { chap:'翻译', topic:'英译汉技巧', desc:'长难句拆分、词性转换法、增译与省译技巧、被动语态的翻译' },
+    { chap:'翻译', topic:'汉译英技巧', desc:'中文四字格处理、无主句处理、定语从句的利用、时态选择' },
+    { chap:'写作', topic:'命题作文与看图作文', desc:'三段式结构（引言-主体-结论）、图表描述常用句式' },
+    { chap:'写作', topic:'应用文写作', desc:'书信/通知/邮件/便条/演讲稿/倡议书的格式与常用表达' },
+    { chap:'写作', topic:'提纲作文与概要写作', desc:'根据提纲展开论述技巧、材料概括与重写方法' },
+    { chap:'写作', topic:'写作高分句型与模板', desc:'倒装/强调/非谓语/从句在写作中的高级运用，告别简单句堆砌' },
+    { chap:'阅读', topic:'阅读理解限时训练', desc:'近年真题阅读限时训练 + 长难句精析 + 错题归因' },
+    { chap:'完形', topic:'完形填空真题精练', desc:'近5年完形真题专项训练 + 高频固定搭配总结' },
+    { chap:'翻译', topic:'翻译真题精练', desc:'英译中与中译英真题实战 + 常见失分点复盘' },
+    { chap:'写作', topic:'写作真题精练', desc:'真题作文限时训练 + 范文背诵 + 亮点句型积累' },
+  ];
+
+  // ==================== 计算机基础 (47 topics) ====================
+  const COMP_CURRICULUM = [
+    // ---- 第1章 计算机基础知识 (15%) ----
+    { chap:'第1章', topic:'计算机发展历史与阶段划分', desc:'电子管/晶体管/集成电路/超大规模集成电路四代，各代标志性机型' },
+    { chap:'第1章', topic:'计算机特点、分类与应用领域', desc:'运算速度快/精度高/存储能力强/逻辑判断能力/自动工作；巨型/大型/微型等' },
+    { chap:'第1章', topic:'数制转换', desc:'二↔八↔十↔十六进制互转，整数与小数部分分别转换' },
+    { chap:'第1章', topic:'二进制算术运算与逻辑运算', desc:'二进制加减乘除、与/或/非/异或逻辑运算、真值表' },
+    { chap:'第1章', topic:'字符编码', desc:'ASCII码（7位128个/8位256个）、汉字编码（输入码/国标码/机内码/字形码）' },
+    { chap:'第1章', topic:'计算机系统组成与工作原理', desc:'冯·诺依曼体系结构（存储程序原理）、五大部件（运算器/控制器/存储器/输入/输出）' },
+    { chap:'第1章', topic:'计算机主要性能指标', desc:'字长、主频、运算速度MIPS/GFlops、存储容量、存取周期' },
+
+    // ---- 第2章 计算机软硬件基础 (20%) ----
+    { chap:'第2章', topic:'CPU功能与组成', desc:'运算器（ALU/累加器）与控制器（PC/IR/时序部件）、CPU工作周期（取指→译码→执行）' },
+    { chap:'第2章', topic:'存储器层次结构', desc:'高速缓存Cache（SRAM）、内存（DRAM）、外存（磁盘/SSD）三级结构与工作原理' },
+    { chap:'第2章', topic:'输入输出设备与常用接口', desc:'键盘鼠标扫描仪（输入）、显示器打印机音箱（输出）、USB/HDMI等接口标准' },
+    { chap:'第2章', topic:'系统软件与应用软件', desc:'操作系统/语言处理程序/数据库管理系统（系统）、办公软件/专业软件（应用）' },
+    { chap:'第2章', topic:'程序设计语言分类', desc:'机器语言（二进制）、汇编语言（助记符）、高级语言（C/Python/Java）编译与解释' },
+    { chap:'第2章', topic:'操作系统概念、功能与分类', desc:'处理机管理/存储器管理/设备管理/文件管理四大功能、批处理/分时/实时/分布式' },
+    { chap:'第2章', topic:'Windows基本操作与文件管理', desc:'桌面/窗口/菜单/对话框操作、文件与文件夹创建复制移动删除重命名' },
+    { chap:'第2章', topic:'控制面板使用', desc:'系统设置、用户账户管理、设备管理器、程序卸载、网络与共享中心' },
+
+    // ---- 第3章 办公自动化 (35% ⭐) ----
+    { chap:'第3章', topic:'Word文档操作与文本编辑', desc:'创建/打开/保存/关闭、文本输入/选择/复制/移动/查找/替换（Ctrl+系列快捷键）' },
+    { chap:'第3章', topic:'Word字符格式与段落格式', desc:'字体/字号/颜色/加粗/斜体/下划线、对齐/缩进/行距/段距/项目符号与编号' },
+    { chap:'第3章', topic:'Word页面格式与表格', desc:'页边距/纸张大小/页眉页脚/页码/分栏、表格创建编辑格式化与计算排序' },
+    { chap:'第3章', topic:'Word图形图片与高级功能', desc:'图片插入编辑/图文混排/艺术字/文本框/形状、目录生成/邮件合并/脚注尾注' },
+    { chap:'第3章', topic:'Excel基本操作与数据输入', desc:'工作簿/工作表/单元格、文本数值日期输入、序列填充与自定义填充' },
+    { chap:'第3章', topic:'Excel公式与常用函数', desc:'SUM/AVERAGE/MAX/MIN/ROUND、COUNT/COUNTA/COUNTIF、IF/AND/OR/VLOOKUP' },
+    { chap:'第3章', topic:'Excel数据管理', desc:'单关键字/多关键字排序、自动筛选/高级筛选、分类汇总、数据有效性' },
+    { chap:'第3章', topic:'Excel图表与数据透视表', desc:'柱形图/折线图/饼图/条形图创建与编辑、数据透视图/表的多维分析' },
+    { chap:'第3章', topic:'PowerPoint基本操作与版式设计', desc:'幻灯片插入/删除/复制/移动、版式设计/主题设置、母版制作与使用' },
+    { chap:'第3章', topic:'PowerPoint动画与放映设置', desc:'进入/强调/退出/动作路径动画、切换效果、超链接/动作按钮、放映设置与打包' },
+
+    // ---- 第4章 网络与信息安全 (10%) ----
+    { chap:'第4章', topic:'计算机网络定义与分类', desc:'LAN/MAN/WAN分类、总线型/星型/环型/树型/网状拓扑的特点与适用场景' },
+    { chap:'第4章', topic:'OSI七层与TCP/IP四层模型', desc:'OSI七层（物链网传会表应）功能、TCP/IP四层（网络接口/网际/传输/应用）对应关系' },
+    { chap:'第4章', topic:'IP地址分类与DNS', desc:'A/B/C/D/E类地址范围与网络号主机号、子网掩码、域名系统解析过程' },
+    { chap:'第4章', topic:'Internet服务', desc:'WWW（HTTP/HTTPS）、电子邮件（SMTP/POP3）、FTP、Telnet协议原理与端口号' },
+    { chap:'第4章', topic:'信息安全与加密技术', desc:'对称加密（DES/AES）、非对称加密（RSA）、数字签名/数字证书、防火墙类型' },
+    { chap:'第4章', topic:'计算机病毒与安全防护', desc:'引导型/文件型/宏病毒/蠕虫/木马特征、传播途径（U盘/网络/邮件）、防治措施' },
+
+    // ---- 第5章 算法与程序设计 (10%) ----
+    { chap:'第5章', topic:'算法的概念、特征与表示', desc:'有穷性/确定性/可行性/输入/输出五大特征、流程图/N-S图/伪代码表示方法' },
+    { chap:'第5章', topic:'基本算法思想', desc:'穷举法（百钱百鸡）、递推法（Fibonacci）、递归法（阶乘）、迭代法（求根）' },
+    { chap:'第5章', topic:'Python基本语法与数据类型', desc:'缩进规则与注释、数字(int/float)/字符串/列表/元组/字典/集合类型' },
+    { chap:'第5章', topic:'Python运算符与表达式', desc:'算术/比较/逻辑/赋值/成员(in)/身份(is)运算符优先级与结合性' },
+    { chap:'第5章', topic:'Python选择结构与循环结构', desc:'if-elif-else、for循环(遍历)、while循环、break/continue控制' },
+    { chap:'第5章', topic:'Python函数定义与字符串操作', desc:'def定义函数、参数传递（位置/默认/关键字）、切片/格式化/常用字符串方法' },
+    { chap:'第5章', topic:'Python列表操作与文件操作', desc:'列表增删改查（append/insert/remove/pop）、列表推导式、文件open/read/write/close' },
+
+    // ---- 第6章 数据库技术 (5%) ----
+    { chap:'第6章', topic:'数据库基本概念与数据模型', desc:'数据/数据库/DBMS/DBS概念层次、层次/网状/关系三种数据模型的特点' },
+    { chap:'第6章', topic:'关系数据库核心概念', desc:'关系/元组/属性/域/主键/外键/候选键概念、关系完整性约束（实体/参照/用户定义）' },
+    { chap:'第6章', topic:'SQL基本操作SELECT/INSERT', desc:'SELECT...FROM...WHERE子句、多表连接查询、INSERT INTO...VALUES插入数据' },
+    { chap:'第6章', topic:'SQL操作UPDATE/DELETE与排序分组', desc:'UPDATE...SET...WHERE更新、DELETE...WHERE删除、ORDER BY排序、GROUP BY分组' },
+
+    // ---- 第7章 计算机新技术 (5%) ----
+    { chap:'第7章', topic:'云计算概念与特征', desc:'按需自助服务/广泛网络接入/资源池化/快速弹性/可计量服务、IaaS/PaaS/SaaS模式' },
+    { chap:'第7章', topic:'大数据概念与4V特征', desc:'Volume（大量）/Variety（多样）/Velocity（高速）/Value（价值）、大数据技术栈' },
+    { chap:'第7章', topic:'人工智能主要领域', desc:'机器学习（监督/非监督/强化学习）、自然语言处理、计算机视觉、语音识别' },
+    { chap:'第7章', topic:'物联网体系架构', desc:'感知层/网络层/应用层三层架构、传感器/RFID/嵌入式技术应用' },
+    { chap:'第7章', topic:'区块链概念与应用', desc:'去中心化/分布式账本/共识机制/加密哈希/不可篡改特征、数字货币与智能合约应用' },
+  ];
+
+  // ==================== 动态学习资源数据库 ====================
+  // 每条资源有关键词匹配数组，render时会根据今日学习内容自动筛选最相关资源
+  const RESOURCE_DB = [
+    // ===== 数学资源 =====
+    { subject:'数学', type:'math',
+      title:'宋浩·高等数学精讲（B站全集）',
+      desc:'完整覆盖第1-7章（函数极限/导数/积分/级数/微分方程），每个考点都有典型例题讲解',
+      url:'https://search.bilibili.com/all?keyword=宋浩+高等数学+专升本',
+      chapters:['第1章','第2章','第3章','第4章','第5章','第6章','第7章'] },
+    { subject:'数学', type:'math',
+      title:'极限与连续专题强化',
+      desc:'重点攻克两个重要极限、等价无穷小代换、间断点分类与连续性证明',
+      url:'https://search.bilibili.com/all?keyword=专升本+极限+连续+函数',
+      chapters:['第1章'] },
+    { subject:'数学', type:'math',
+      title:'导数与微分专题精讲',
+      desc:'复合函数求导链式法则、隐函数求导、洛必达法则、单调性与极值问题',
+      url:'https://search.bilibili.com/all?keyword=专升本+导数+微分+洛必达',
+      chapters:['第2章'] },
+    { subject:'数学', type:'math',
+      title:'不定积分与定积分专题',
+      desc:'换元积分法、分部积分法、定积分应用（面积/体积/弧长）、广义积分收敛判别',
+      url:'https://search.bilibili.com/all?keyword=专升本+不定积分+定积分',
+      chapters:['第3章'] },
+    { subject:'数学', type:'math',
+      title:'向量与空间解析几何',
+      desc:'数量积与向量积、平面方程点法式与一般式、直线方程点向式与参数式',
+      url:'https://search.bilibili.com/all?keyword=专升本+空间解析几何+向量',
+      chapters:['第4章'] },
+    { subject:'数学', type:'math',
+      title:'多元函数微分与二重积分',
+      desc:'偏导数与全微分、多元函数极值拉格朗日乘数法、直角/极坐标系下二重积分计算',
+      url:'https://search.bilibili.com/all?keyword=专升本+多元函数+二重积分',
+      chapters:['第5章'] },
+    { subject:'数学', type:'math',
+      title:'无穷级数专题',
+      desc:'正项级数审敛法（比较/比值）、交错级数莱布尼茨、幂级数收敛半径与展开',
+      url:'https://search.bilibili.com/all?keyword=专升本+无穷级数+幂级数',
+      chapters:['第6章'] },
+    { subject:'数学', type:'math',
+      title:'常微分方程专题',
+      desc:'可分离变量方程、一阶线性方程通解公式、二阶常系数线性微分方程特征根法',
+      url:'https://search.bilibili.com/all?keyword=专升本+微分方程',
+      chapters:['第7章'] },
+    { subject:'数学', type:'math',
+      title:'线性代数精讲（B站全集）',
+      desc:'行列式计算、矩阵运算与逆、向量组相关性、线性方程组求解，覆盖第8-11章',
+      url:'https://search.bilibili.com/all?keyword=专升本+线性代数+行列式+矩阵',
+      chapters:['第8章','第9章','第10章','第11章'] },
+    { subject:'数学', type:'math',
+      title:'同济《高等数学》第七版教材',
+      desc:'官方指定教材，章节完全对应考纲，课后习题含大量考试原题改编',
+      url:'https://search.jd.com/Search?keyword=同济大学高等数学第七版',
+      chapters:['第1章','第2章','第3章','第4章','第5章','第6章','第7章'] },
+    { subject:'数学', type:'math',
+      title:'同济《线性代数》第六版教材',
+      desc:'官方指定教材，矩阵/行列式/向量/线性方程组全覆盖，课后习题需逐题吃透',
+      url:'https://search.jd.com/Search?keyword=工程数学线性代数第六版',
+      chapters:['第8章','第9章','第10章','第11章'] },
+
+    // ===== 计算机资源 =====
+    { subject:'计算机', type:'comp',
+      title:'计算机基础精讲（B站全集）',
+      desc:'覆盖考纲第1-7章，含数制转换/硬件系统/操作系统/网络/数据库/新技术等全部考点',
+      url:'https://search.bilibili.com/all?keyword=专升本+计算机基础+精讲',
+      chapters:['第1章','第2章','第3章','第4章','第5章','第6章','第7章'] },
+    { subject:'计算机', type:'comp',
+      title:'数制与编码专题',
+      desc:'二八十六进制互转、二进制算术与逻辑运算、ASCII码与汉字编码体系',
+      url:'https://search.bilibili.com/all?keyword=专升本+计算机+数制+编码',
+      chapters:['第1章'] },
+    { subject:'计算机', type:'comp',
+      title:'计算机软硬件系统',
+      desc:'CPU组成/存储器层次/IO设备接口、操作系统进程管理/存储管理/文件管理',
+      url:'https://search.bilibili.com/all?keyword=专升本+计算机+软硬件+操作系统',
+      chapters:['第2章'] },
+    { subject:'计算机', type:'comp',
+      title:'Office办公自动化（Word/Excel/PPT）',
+      desc:'35%分值重点版块！Word排版/Excel公式与函数/数据管理/图表、PPT动画与放映',
+      url:'https://search.bilibili.com/all?keyword=专升本+Office+办公自动化',
+      chapters:['第3章'] },
+    { subject:'计算机', type:'comp',
+      title:'计算机网络与信息安全',
+      desc:'OSI七层/TCP四层、IP地址分类与子网掩码、加密技术/数字签名/防火墙/病毒防治',
+      url:'https://search.bilibili.com/all?keyword=专升本+计算机网络+信息安全',
+      chapters:['第4章'] },
+    { subject:'计算机', type:'comp',
+      title:'Python编程入门与算法',
+      desc:'基础语法/选择循环/函数定义/列表操作/文件操作，LeetCode入门刷题巩固',
+      url:'https://search.bilibili.com/all?keyword=专升本+Python+编程',
+      chapters:['第5章'] },
+    { subject:'计算机', type:'comp',
+      title:'数据库技术基础',
+      desc:'关系数据库模型、SQL四类操作（SELECT/INSERT/UPDATE/DELETE）、排序与分组',
+      url:'https://search.bilibili.com/all?keyword=专升本+数据库+SQL',
+      chapters:['第6章'] },
+    { subject:'计算机', type:'comp',
+      title:'计算机新技术（云大物智链）',
+      desc:'云计算IaaS/PaaS/SaaS、大数据4V特征、AI主要领域、物联网三层架构、区块链特征',
+      url:'https://search.bilibili.com/all?keyword=专升本+云计算+大数据+人工智能',
+      chapters:['第7章'] },
+    { subject:'计算机', type:'comp',
+      title:'数据结构可视化工具（VisuAlgo）',
+      desc:'通过动画直观理解栈/队列/树/图/排序/查找等数据结构的运行过程',
+      url:'https://visualgo.net/zh',
+      chapters:['第5章'] },
+    { subject:'计算机', type:'comp',
+      title:'LeetCode 入门题库（Python）',
+      desc:'与考纲第5章算法与程序设计同步训练，从简单题开始用Python刷题巩固算法思维',
+      url:'https://leetcode.cn/',
+      chapters:['第5章'] },
+
+    // ===== 英语资源 =====
+    { subject:'英语', type:'eng',
+      title:'专升本英语语法精讲（B站）',
+      desc:'九大词性/十二时态/三大从句/非谓语动词/虚拟语气/倒装强调等全部语法考点',
+      url:'https://search.bilibili.com/all?keyword=专升本+英语+语法+精讲',
+      chapters:['语法'] },
+    { subject:'英语', type:'eng',
+      title:'专升本英语词汇速记',
+      desc:'核心3500词分类记忆、词根词缀法、高频搭配辨析，每日打卡50词+复习100词',
+      url:'https://search.bilibili.com/all?keyword=专升本+英语+词汇+速记',
+      chapters:['词汇'] },
+    { subject:'英语', type:'eng',
+      title:'阅读理解专项训练',
+      desc:'主旨大意题/细节理解题/推理判断题/词义猜测题/观点态度题解题技巧+真题精练',
+      url:'https://search.bilibili.com/all?keyword=专升本+英语+阅读理解+技巧',
+      chapters:['阅读'] },
+    { subject:'英语', type:'eng',
+      title:'完形填空与短文改错',
+      desc:'上下文逻辑推理、固定搭配识别、词法句法错误类型的系统训练',
+      url:'https://search.bilibili.com/all?keyword=专升本+英语+完形填空+改错',
+      chapters:['完形','改错'] },
+    { subject:'英语', type:'eng',
+      title:'翻译技巧专项（英译中+中译英）',
+      desc:'长难句拆分、词性转换、被动语态翻译、四字格处理，真题实战训练',
+      url:'https://search.bilibili.com/all?keyword=专升本+英语+翻译+技巧',
+      chapters:['翻译'] },
+    { subject:'英语', type:'eng',
+      title:'英语写作高分模板与范文',
+      desc:'议论文/应用文/看图作文/提纲作文模板，高分句型积累+近年真题范文精析',
+      url:'https://search.bilibili.com/all?keyword=专升本+英语+写作+模板',
+      chapters:['写作'] },
+    { subject:'英语', type:'eng',
+      title:'英文阅读网（阅读理解辅助练习）',
+      desc:'双语新闻/美文/科普文章，适合培养语感和扩充阅读量，辅助阅读理解训练',
+      url:'https://www.enread.com/',
+      chapters:['阅读'] },
+    { subject:'英语', type:'eng',
+      title:'英语真题精练（B站真题讲解）',
+      desc:'近年专升本英语真题逐题精讲，含阅读/完形/翻译/写作全题型解析',
+      url:'https://search.bilibili.com/all?keyword=专升本+英语+真题+精讲',
+      chapters:['阅读','完形','翻译','写作'] },
+  ];
+
+  // ==================== 题库（按章节/版块标注） ====================
+  const QUESTION_BANK = [
+    // ===== 数学 — 第1章 函数、极限与连续 =====
+    { subject:'数学', type:'math', chapter:'第1章',
+      q:'当 x→0 时，下列哪个函数与 x 是等价无穷小？',
+      opts:['A. sin(x²)','B. 1-cos x','C. tan x','D. eˣ-2'],
+      ans:2, explain:'tan x ~ x（x→0）。A 选项 sin(x²)~x² 是高阶无穷小；B 选项 1-cos x~½x² 也是高阶；D 选项 eˣ-2→-1 不是无穷小。' },
+    { subject:'数学', type:'math', chapter:'第1章',
+      q:'函数 f(x) = (x²-1)/(x-1) 在 x=1 处是：',
+      opts:['A. 连续','B. 可去间断点','C. 跳跃间断点','D. 无穷间断点'],
+      ans:1, explain:'f(x) = (x²-1)/(x-1) = x+1（x≠1），lim(x→1)f(x)=2 存在但 f(1) 无定义，为可去间断点。' },
+    // ===== 数学 — 第2章 一元函数微分学 =====
+    { subject:'数学', type:'math', chapter:'第2章',
+      q:'函数 y = ln(sin x) 的导数 dy/dx 等于：',
+      opts:['A. cos x / sin x','B. 1/sin x','C. cot x','D. tan x'],
+      ans:0, explain:'由链式法则：y\' = (1/sin x) · cos x = cos x / sin x = cot x。选 A 或 C 均可（cot x = cos x/sin x），这里 A 最直接。' },
+    { subject:'数学', type:'math', chapter:'第2章',
+      q:'lim(x→0) (sin 2x)/(3x) 的值为：',
+      opts:['A. 0','B. 1/3','C. 2/3','D. 3/2'],
+      ans:2, explain:'lim(x→0) (sin 2x)/(3x) = lim(x→0) (sin 2x)/(2x) · (2/3) = 1 × 2/3 = 2/3。' },
+    // ===== 数学 — 第3章 一元函数积分学 =====
+    { subject:'数学', type:'math', chapter:'第3章',
+      q:'下列哪个是 ∫ x·eˣ dx 的正确结果？',
+      opts:['A. eˣ(x-1) + C','B. eˣ(x+1) + C','C. x·eˣ + C','D. eˣ + C'],
+      ans:0, explain:'使用分部积分法：∫ x·eˣ dx = x·eˣ - ∫ eˣ dx = x·eˣ - eˣ + C = eˣ(x-1) + C。' },
+    { subject:'数学', type:'math', chapter:'第3章',
+      q:'定积分 ∫₀¹ x² dx 的值为：',
+      opts:['A. 1/2','B. 1/3','C. 1','D. 2/3'],
+      ans:1, explain:'∫₀¹ x² dx = [x³/3]₀¹ = 1/3。' },
+    // ===== 数学 — 第4章 向量代数与空间解析几何 =====
+    { subject:'数学', type:'math', chapter:'第4章',
+      q:'向量 a=(1,2,1) 与 b=(2,-1,0) 的数量积 a·b 等于：',
+      opts:['A. 0','B. 1','C. 2','D. 4'],
+      ans:0, explain:'a·b = 1×2 + 2×(-1) + 1×0 = 2-2+0 = 0，两向量垂直。' },
+    // ===== 数学 — 第5章 多元函数微分学与二重积分 =====
+    { subject:'数学', type:'math', chapter:'第5章',
+      q:'函数 z = x²y + y³ 对 y 的偏导数 ∂z/∂y 为：',
+      opts:['A. 2xy + 3y²','B. x² + 3y²','C. 2x + 3y²','D. x²y²'],
+      ans:1, explain:'对 y 求偏导时，x 视为常数：∂z/∂y = x² + 3y²。' },
+    // ===== 数学 — 第6章 无穷级数 =====
+    { subject:'数学', type:'math', chapter:'第6章',
+      q:'级数 Σ(n=1→∞) 1/n² 的敛散性为：',
+      opts:['A. 发散','B. 收敛','C. 条件收敛','D. 无法判断'],
+      ans:1, explain:'p-级数 Σ1/nᵖ，当 p>1 时收敛。这里 p=2>1，所以收敛。' },
+    // ===== 数学 — 第7章 常微分方程 =====
+    { subject:'数学', type:'math', chapter:'第7章',
+      q:'微分方程 y\' = 2x 的通解为：',
+      opts:['A. y = x² + C','B. y = 2x + C','C. y = x²/2 + C','D. y = x³/3 + C'],
+      ans:0, explain:'直接积分：y = ∫2x dx = x² + C。' },
+    // ===== 数学 — 第8章 行列式 =====
+    { subject:'数学', type:'math', chapter:'第8章',
+      q:'三阶行列式 |1 0 0; 0 2 0; 0 0 3| 的值为：',
+      opts:['A. 1','B. 2','C. 3','D. 6'],
+      ans:3, explain:'对角行列式等于对角线上元素之积：1×2×3=6。' },
+    // ===== 数学 — 第9章 矩阵 =====
+    { subject:'数学', type:'math', chapter:'第9章',
+      q:'矩阵 A=[[1,2],[3,4]] 的逆矩阵 A⁻¹ 的第一行第一列元素为：',
+      opts:['A. -2','B. 1','C. 2','D. 4'],
+      ans:0, explain:'det(A)=1×4-2×3=-2，A⁻¹=1/(-2)[[4,-2],[-3,1]] = [[-2,1],[1.5,-0.5]]，第一行第一列为-2。' },
+    // ===== 数学 — 第10章 向量 =====
+    { subject:'数学', type:'math', chapter:'第10章',
+      q:'向量组 α₁=(1,0), α₂=(0,1), α₃=(1,1) 的秩为：',
+      opts:['A. 1','B. 2','C. 3','D. 0'],
+      ans:1, explain:'α₁ 和 α₂ 线性无关（构成基底），α₃=α₁+α₂ 可由它们线性表示，所以极大无关组含 2 个向量，秩为 2。' },
+    // ===== 数学 — 第11章 线性方程组 =====
+    { subject:'数学', type:'math', chapter:'第11章',
+      q:'齐次线性方程组 x+y=0, 2x+2y=0 的解的情况是：',
+      opts:['A. 唯一零解','B. 无穷多非零解','C. 无解','D. 无法判断'],
+      ans:1, explain:'两个方程只差一个常数倍（第二式是第一式×2），有效方程 1 个，未知数 2 个，有自由变量，故有无穷多解。' },
+
+    // ===== 计算机 — 第1章 计算机基础知识 =====
+    { subject:'计算机', type:'comp', chapter:'第1章',
+      q:'二进制数 1101 转换为十进制为：',
+      opts:['A. 11','B. 12','C. 13','D. 14'],
+      ans:2, explain:'1101₂ = 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 8+4+0+1=13。' },
+    { subject:'计算机', type:'comp', chapter:'第1章',
+      q:'冯·诺依曼体系结构的核心思想是：',
+      opts:['A. 分布式计算','B. 存储程序','C. 并行处理','D. 虚拟化'],
+      ans:1, explain:'冯·诺依曼体系采用"存储程序"原理，将指令和数据一起存放在存储器中，由程序计数器控制自动执行。' },
+    // ===== 计算机 — 第2章 计算机软硬件基础 =====
+    { subject:'计算机', type:'comp', chapter:'第2章',
+      q:'Cache（高速缓存）通常使用的存储介质是：',
+      opts:['A. SRAM','B. DRAM','C. 磁盘','D. 光盘'],
+      ans:0, explain:'Cache 使用静态随机存取存储器（SRAM），速度比 DRAM（内存）快但成本更高。' },
+    { subject:'计算机', type:'comp', chapter:'第2章',
+      q:'操作系统的主要功能不包括：',
+      opts:['A. 处理机管理','B. 数据库管理','C. 存储器管理','D. 设备管理'],
+      ans:1, explain:'操作系统四大管理功能：处理机管理、存储器管理、设备管理、文件管理。数据库管理由数据库管理系统（DBMS）完成。' },
+    // ===== 计算机 — 第3章 办公自动化 =====
+    { subject:'计算机', type:'comp', chapter:'第3章',
+      q:'Excel 中，下列哪个函数用于按条件统计个数？',
+      opts:['A. SUM','B. AVERAGE','C. COUNTIF','D. VLOOKUP'],
+      ans:2, explain:'COUNTIF(range,criteria) 用于统计满足条件的单元格个数。SUM 求和、AVERAGE 求平均值、VLOOKUP 垂直查找。' },
+    { subject:'计算机', type:'comp', chapter:'第3章',
+      q:'Word 中，生成目录应使用哪个功能？',
+      opts:['A. 页眉页脚','B. 引用→目录','C. 邮件合并','D. 插入→文本框'],
+      ans:1, explain:'在 Word 中，通过「引用」选项卡→「目录」可自动生成基于标题样式的目录。' },
+    // ===== 计算机 — 第4章 网络与信息安全 =====
+    { subject:'计算机', type:'comp', chapter:'第4章',
+      q:'IPv4 地址 192.168.1.1 属于哪一类？',
+      opts:['A. A 类','B. B 类','C. C 类','D. D 类'],
+      ans:2, explain:'192 开头属于 C 类地址（192.0.0.0~223.255.255.255），常用于局域网。' },
+    { subject:'计算机', type:'comp', chapter:'第4章',
+      q:'HTTPS 协议中，"S" 代表的安全机制是：',
+      opts:['A. 数字签名','B. SSL/TLS 加密','C. 防火墙','D. 入侵检测'],
+      ans:1, explain:'HTTPS = HTTP + SSL/TLS，通过 SSL/TLS 协议对传输内容进行加密，保证数据传输安全。' },
+    // ===== 计算机 — 第5章 算法与程序设计 =====
+    { subject:'计算机', type:'comp', chapter:'第5章',
+      q:'Python 中，以下哪个语句能正确输出 "Hello World"？',
+      opts:['A. print("Hello World")','B. echo "Hello World"','C. console.log("Hello World")','D. printf("Hello World")'],
+      ans:0, explain:'Python 使用 print() 函数输出，echo 是 PHP/shell 的命令，console.log 是 JavaScript 的，printf 是 C 语言的。' },
+    { subject:'计算机', type:'comp', chapter:'第5章',
+      q:'以下哪个不是算法的基本特征？',
+      opts:['A. 有穷性','B. 确定性','C. 并行性','D. 可行性'],
+      ans:2, explain:'算法的五大特征：有穷性、确定性、可行性、输入、输出。并行性不是算法的必备特征。' },
+    // ===== 计算机 — 第6章 数据库技术 =====
+    { subject:'计算机', type:'comp', chapter:'第6章',
+      q:'SQL 中，查询所有学生姓名和年龄的语句是：',
+      opts:['A. SELECT 姓名,年龄 FROM 学生','B. FIND 姓名,年龄 IN 学生','C. GET 姓名,年龄 FROM 学生','D. SEARCH 姓名,年龄 学生'],
+      ans:0, explain:'SQL 查询使用 SELECT...FROM... 语句格式，SELECT 后跟要查询的列名，FROM 后跟表名。' },
+    { subject:'计算机', type:'comp', chapter:'第6章',
+      q:'关系数据库中，能唯一标识一条记录的字段称为：',
+      opts:['A. 外键','B. 候选键','C. 主键','D. 索引'],
+      ans:2, explain:'主键（Primary Key）能唯一标识表中的每一条记录，具有唯一性和非空性。' },
+    // ===== 计算机 — 第7章 计算机新技术 =====
+    { subject:'计算机', type:'comp', chapter:'第7章',
+      q:'以下哪个不属于云计算的三种服务模式？',
+      opts:['A. IaaS','B. PaaS','C. SaaS','D. DaaS'],
+      ans:3, explain:'云计算的三种基本服务模式：基础设施即服务 IaaS、平台即服务 PaaS、软件即服务 SaaS。DaaS（数据即服务/桌面即服务）不是标准三分法。' },
+
+    // ===== 英语 — 词汇 =====
+    { subject:'英语', type:'eng', chapter:'词汇',
+      q:'"The teacher asked the students to ___ the main idea of the passage." 最合适的词是：',
+      opts:['A. summarize','B. organize','C. recognize','D. memorize'],
+      ans:0, explain:'summarize 意为"总结、概括"，符合"总结文章主旨"的语境。organize 组织、recognize 识别、memorize 记忆，均不符合。' },
+    { subject:'英语', type:'eng', chapter:'词汇',
+      q:'下列哪个词组表示"依靠、依赖"？',
+      opts:['A. look for','B. depend on','C. give up','D. turn off'],
+      ans:1, explain:'depend on/upon 意为依赖、依靠；look for 寻找；give up 放弃；turn off 关闭。' },
+    // ===== 英语 — 语法 =====
+    { subject:'英语', type:'eng', chapter:'语法',
+      q:'"If I ___ you, I would accept the offer." 横线处应填：',
+      opts:['A. am','B. was','C. were','D. be'],
+      ans:2, explain:'与现在事实相反的虚拟语气，if 从句用过去式，be 动词统一用 were。表示"如果我是你……"的固定用法。' },
+    { subject:'英语', type:'eng', chapter:'语法',
+      q:'"The book ___ I borrowed from the library is very interesting." 横线处应填：',
+      opts:['A. who','B. which','C. whom','D. what'],
+      ans:1, explain:'先行词是物（the book），定语从句用关系代词 which 或 that 引导。这里 which 最合适。' },
+    { subject:'英语', type:'eng', chapter:'语法',
+      q:'"He has been studying English ___ three years." 横线处应填：',
+      opts:['A. since','B. for','C. during','D. in'],
+      ans:1, explain:'现在完成进行时中，for + 时间段（three years）表示持续了多长时间。since + 时间点。' },
+    // ===== 英语 — 阅读 =====
+    { subject:'英语', type:'eng', chapter:'阅读',
+      q:'阅读理解中，问"What is the main idea of the passage?" 属于哪种题型？',
+      opts:['A. 细节理解题','B. 主旨大意题','C. 推理判断题','D. 词义猜测题'],
+      ans:1, explain:'提问文章"main idea"（主旨大意）属于主旨大意题，需要把握全文核心观点。' },
+    // ===== 英语 — 翻译 =====
+    { subject:'英语', type:'eng', chapter:'翻译',
+      q:'英译中："It is generally believed that education is the key to success." 的最佳译文是：',
+      opts:['A. 人们普遍认为教育是成功的关键。','B. 教育一般被认为是成功的关键。','C. 通常相信的教育是成功的关键。','D. 一般教育是成功的关键。'],
+      ans:0, explain:'It is generally believed that... 是常用被动句型，译为"人们普遍认为……"。翻译时要将被动转为主动。' },
+    // ===== 英语 — 写作 =====
+    { subject:'英语', type:'eng', chapter:'写作',
+      q:'英文书信中，"Dear Sir or Madam" 属于：',
+      opts:['A. 正文','B. 称呼语','C. 结束语','D. 签名'],
+      ans:1, explain:'"Dear Sir or Madam" 是书信开头的称呼语（Salutation），用于不知道收件人具体姓名时。' },
+    // ===== 英语 — 完形 =====
+    { subject:'英语', type:'eng', chapter:'完形',
+      q:'完形填空中，遇到前后句有"however""therefore"等词时，首先应判断：',
+      opts:['A. 词义辨析','B. 逻辑关系','C. 固定搭配','D. 语法结构'],
+      ans:1, explain:'however（然而）表转折、therefore（因此）表因果，这些连接词提示上下文逻辑关系，应先判断逻辑再选词。' },
+    // ===== 英语 — 改错 =====
+    { subject:'英语', type:'eng', chapter:'改错',
+      q:'短文改错中，"He go to school by bus every day." 的错误是：',
+      opts:['A. 冠词错误','B. 时态错误','C. 主谓不一致','D. 介词错误'],
+      ans:2, explain:'主语 He 是第三人称单数，一般现在时谓语动词应加 -s，应为 goes。主谓不一致错误。' },
+  ];
+
+
+
+  /* ============================================================
+     UTILITY
+
+
+  /* ============================================================
+     UTILITY
+  ============================================================ */
+  function getTodayKey() {
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function getDayOfYear(date) {
+    const start = new Date(date.getFullYear(),0,0);
+    return Math.floor((date-start)/(1000*60*60*24));
+  }
+  function getChineseWeekday(date) {
+    return ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][date.getDay()];
+  }
+  function formatDate(date) {
+    const y=date.getFullYear(), m=String(date.getMonth()+1).padStart(2,'0'), d=String(date.getDate()).padStart(2,'0');
+    return y+' 年 '+m+' 月 '+d+' 日 '+getChineseWeekday(date);
+  }
+  function daysBetween(a,b) {
+    return Math.floor((b-a)/(1000*60*60*24));
+  }
+  function showToast(msg) {
+    const t=document.getElementById('toast');
+    t.textContent=msg; t.classList.add('show');
+    clearTimeout(t._hide);
+    t._hide=setTimeout(()=>t.classList.remove('show'),2200);
+  }
+  function escapeHtml(str) {
+    const d=document.createElement('div');
+    d.textContent=str; return d.innerHTML;
+  }
+
+  /* ============================================================
+     PROGRESSIVE SCHEDULER — 3 阶段循序渐进规划
+     从 COURSE_START 起，每天按顺序推进课程内容
+     
+     Phase 1: 📖 基础学习  — 第一遍系统学习所有知识点
+     Phase 2: 🔁 第一轮复习 — 第二遍巩固，查漏补缺
+     Phase 3+: 🔄 第N轮复习 — 冲刺阶段快速轮转
+     
+     第一个科目（数学）完成第一轮=全科第一轮结束标志
+     各科根据章节数自动适配每天学习量
+  ============================================================ */
+  function getPhaseLabels(passNum, totalPasses) {
+    if (passNum === 1) return { icon:'📖', label:'基础学习', subtitle:'系统学习全部知识点' };
+    if (passNum === 2) return { icon:'🔁', label:'第一轮复习', subtitle:'巩固提升，查漏补缺' };
+    if (passNum === 3) return { icon:'🔁', label:'第二轮复习', subtitle:'强化训练，重点攻关' };
+    return { icon:'🔄', label:'第'+(passNum-1)+'轮复习', subtitle:'冲刺快速轮转' };
+  }
+
+  function getChapterProgress(curriculum, itemsPerDay, daysSinceStart) {
+    // Which item index are we at today (start of today's batch)
+    const total = curriculum.length;
+    const currentIdx = (daysSinceStart * itemsPerDay) % total;
+    const totalChapters = [...new Set(curriculum.map(t => t.chap))];
+    // Find which chapter the current index falls into
+    let currentChap = curriculum[currentIdx].chap;
+    let chapIdx = totalChapters.indexOf(currentChap);
+    return { currentChap, chapIdx: chapIdx + 1, totalChaps: totalChapters.length };
+  }
+
+  function pickProgressive(curriculum, itemsPerDay, daysSinceStart) {
+    const total = curriculum.length;
+    const startIdx = (daysSinceStart * itemsPerDay) % total;
+    const result = [];
+    for (let i = 0; i < itemsPerDay; i++) {
+      const idx = (startIdx + i) % total;
+      result.push(curriculum[idx]);
+    }
+    return result;
+  }
+
+  function getStudyPhase(daysSinceStart, curriculum, itemsPerDay) {
+    const total = curriculum.length;
+    const daysPerPass = Math.ceil(total / itemsPerDay);
+    const currentPass = Math.floor(daysSinceStart / daysPerPass) + 1;
+    const totalPasses = Math.ceil(daysBetween(COURSE_START, EXAM_DATE) / daysPerPass);
+    const dayInPass = (daysSinceStart % daysPerPass) + 1;
+    const progress = Math.round((dayInPass / daysPerPass) * 100);
+    const labels = getPhaseLabels(currentPass, totalPasses);
+    return { currentPass, totalPasses, daysPerPass, dayInPass, progress, ...labels };
+  }
+
+
+  /* ============================================================
+     DAILY PLAN GENERATOR
+  ============================================================ */
+  function generateDailyPlan() {
+    const today = new Date();
+    const daysSinceStart = Math.max(0, daysBetween(COURSE_START, today));
+    const items = [];
+    let globalId = 0;
+
+    // Get overall phase (use Math as anchor subject)
+    const mathPhase = getStudyPhase(daysSinceStart, MATH_CURRICULUM, 3);
+    const isFirstPass = mathPhase.currentPass === 1;
+    const phaseIcon = mathPhase.icon;
+    const phaseName = mathPhase.label;
+
+    // Math: 3 items/day — ~51 min total — 80% weight
+    const mathItems = pickProgressive(MATH_CURRICULUM, 3, daysSinceStart);
+    mathItems.forEach(t => {
+      globalId++;
+      items.push({
+        id: globalId, subject:'数学', subjectType:'math',
+        chapter: t.chap, title: t.topic,
+        desc: (isFirstPass ? '📖 ' : '🔁 ') + t.desc,
+        time: 17, completed: false,
+        phase: phaseName, phaseIcon: phaseIcon,
+      });
+    });
+
+    // Computer: 2 items/day — ~38 min total
+    const compItems = pickProgressive(COMP_CURRICULUM, 2, daysSinceStart);
+    compItems.forEach(t => {
+      globalId++;
+      items.push({
+        id: globalId, subject:'计算机', subjectType:'comp',
+        chapter: t.chap, title: t.topic,
+        desc: (isFirstPass ? '📖 ' : '🔁 ') + t.desc,
+        time: 19, completed: false,
+        phase: phaseName, phaseIcon: phaseIcon,
+      });
+    });
+
+    // English: 2 items/day — ~36 min total
+    const engItems = pickProgressive(ENG_CURRICULUM, 2, daysSinceStart);
+    engItems.forEach(t => {
+      globalId++;
+      items.push({
+        id: globalId, subject:'英语', subjectType:'eng',
+        chapter: t.chap, title: t.topic,
+        desc: (isFirstPass ? '📖 ' : '🔁 ') + t.desc,
+        time: 18, completed: false,
+        phase: phaseName, phaseIcon: phaseIcon,
+      });
+    });
+
+    // Restore check-in
+    const todayKey = getTodayKey();
+    const saved = localStorage.getItem(STORAGE_KEY_CHECKIN + todayKey);
+    if (saved) {
+      try {
+        const completedIds = JSON.parse(saved);
+        items.forEach(item => {
+          if (completedIds.includes(item.id)) item.completed = true;
+        });
+      } catch(e) {}
+    }
+
+    return items;
+  }
+
+  /* ============================================================
+     RENDER
+  ============================================================ */
+  let planItems = [];
+
+  function render() {
+    planItems = generateDailyPlan();
+    const today = new Date();
+    const todayKey = getTodayKey();
+    const daysSinceStart = Math.max(0, daysBetween(COURSE_START, today));
+
+    // ---- Phase Badge + Chapter Progress ----
+    const mathPhase = getStudyPhase(daysSinceStart, MATH_CURRICULUM, 3);
+    const compPhase = getStudyPhase(daysSinceStart, COMP_CURRICULUM, 2);
+    const engPhase = getStudyPhase(daysSinceStart, ENG_CURRICULUM, 2);
+    const mathChap = getChapterProgress(MATH_CURRICULUM, 3, daysSinceStart);
+    const compChap = getChapterProgress(COMP_CURRICULUM, 2, daysSinceStart);
+    const engChap = getChapterProgress(ENG_CURRICULUM, 2, daysSinceStart);
+
+    const badge = document.getElementById('phaseBadge');
+    badge.innerHTML = mathPhase.icon + ' ' + mathPhase.label + ' · 第' + mathPhase.dayInPass + '/' + mathPhase.daysPerPass + '天 <span style="opacity:0.7;font-weight:400;">(' + mathPhase.progress + '%)</span>';
+
+    // ---- Chapter Progress ----
+    const chapProgressHTML = `
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;width:100%;">
+        <div class="syllabus-progress" style="flex:1;min-width:200px;">
+          <span style="font-size:0.85rem;font-weight:600;white-space:nowrap;">📐 数学 ${mathChap.chapIdx}/${mathChap.totalChaps}章</span>
+          <div class="syllabus-progress-bar"><div class="syllabus-progress-fill" style="width:${Math.round(mathChap.chapIdx/mathChap.totalChaps*100)}%;background:#D35400;"></div></div>
+          <span class="syllabus-progress-label">${mathChap.currentChap}</span>
+        </div>
+        <div class="syllabus-progress" style="flex:1;min-width:200px;">
+          <span style="font-size:0.85rem;font-weight:600;white-space:nowrap;">💻 计算机 ${compChap.chapIdx}/${compChap.totalChaps}章</span>
+          <div class="syllabus-progress-bar"><div class="syllabus-progress-fill" style="width:${Math.round(compChap.chapIdx/compChap.totalChaps*100)}%;background:#2980B9;"></div></div>
+          <span class="syllabus-progress-label">${compChap.currentChap}</span>
+        </div>
+        <div class="syllabus-progress" style="flex:1;min-width:200px;">
+          <span style="font-size:0.85rem;font-weight:600;white-space:nowrap;">🔤 英语 ${engChap.chapIdx}/${engChap.totalChaps}版块</span>
+          <div class="syllabus-progress-bar"><div class="syllabus-progress-fill" style="width:${Math.round(engChap.chapIdx/engChap.totalChaps*100)}%;background:#8E44AD;"></div></div>
+          <span class="syllabus-progress-label">${engChap.currentChap}</span>
+        </div>
+      </div>
+    `;
+
+    // ---- Syllabus Progress ----
+    const overallDays = daysBetween(COURSE_START, EXAM_DATE);
+    const overallPct = Math.min(100, Math.round((daysSinceStart / overallDays) * 100));
+
+    // ---- Hero Date ----
+    document.getElementById('heroDate').textContent = formatDate(today);
+
+    // ---- Stats ----
+    const totalItems = planItems.length;
+    const completedItems = planItems.filter(i => i.completed).length;
+    const totalTime = planItems.reduce((s, i) => s + i.time, 0);
+    const daysToExam = Math.max(0, daysBetween(today, EXAM_DATE));
+
+    document.getElementById('statTotal').textContent = totalItems;
+    document.getElementById('statCompleted').textContent = completedItems;
+    document.getElementById('statTime').textContent = totalTime;
+    document.getElementById('statDays').textContent = daysToExam;
+    document.getElementById('statDayNum').textContent = daysSinceStart + 1;
+    document.getElementById('todayCount').textContent = '共 ' + totalItems + ' 项';
+
+    // Insert chapter progress bars before the plan grid
+    const planGridParent = document.getElementById('section-today');
+    const existingProgress = planGridParent.querySelector('.chapter-progress-wrapper');
+    if (existingProgress) existingProgress.remove();
+    const wrapper = document.createElement('div');
+    wrapper.className = 'chapter-progress-wrapper';
+    wrapper.innerHTML = chapProgressHTML;
+    planGridParent.insertBefore(wrapper, document.getElementById('planGrid'));
+
+    // ---- Render Plan Cards ----
+    const planGrid = document.getElementById('planGrid');
+    planGrid.innerHTML = '';
+    planItems.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card animate-on-scroll' + (item.completed ? ' completed' : '');
+      card.innerHTML = `
+        <div class="card-num">${item.id}</div>
+        <span class="card-subject ${item.subjectType}">${item.subject}</span>
+        <span class="card-chapter">${item.phaseIcon} ${item.chapter}</span>
+        <div class="card-title">${item.title}</div>
+        <div class="card-desc">${item.desc}</div>
+        <div class="card-footer">
+          <span class="card-time">⏱ ${item.time} 分钟</span>
+          <button class="card-check-btn ${item.completed?'done':''}" data-id="${item.id}">
+            ${item.completed ? '✅ 已完成' : '○ 未打卡'}
+          </button>
+        </div>
+      `;
+      planGrid.appendChild(card);
+
+      const btn = card.querySelector('.card-check-btn');
+      btn.addEventListener('click', function() {
+        const id = parseInt(this.dataset.id);
+        const target = planItems.find(i => i.id === id);
+        if (!target) return;
+        target.completed = !target.completed;
+
+        const completedIds = planItems.filter(i => i.completed).map(i => i.id);
+        localStorage.setItem(STORAGE_KEY_CHECKIN + todayKey, JSON.stringify(completedIds));
+
+        this.textContent = target.completed ? '✅ 已完成' : '○ 未打卡';
+        this.classList.toggle('done', target.completed);
+        card.classList.toggle('completed', target.completed);
+
+        const newCompleted = planItems.filter(i => i.completed).length;
+        document.getElementById('statCompleted').textContent = newCompleted;
+        const doneTime = planItems.filter(i => i.completed).reduce((s,i) => s + i.time, 0);
+
+        // Recalc time section
+        const mathList = planItems.filter(i => i.subjectType === 'math');
+        const compList = planItems.filter(i => i.subjectType === 'comp');
+        const engList = planItems.filter(i => i.subjectType === 'eng');
+        updateTimeSection(mathList, compList, engList, totalTime);
+
+        showToast(target.completed ? '🎉 打卡成功！继续加油！' : '👌 已取消打卡');
+      });
+    });
+
+    // ---- Render Time Summary ----
+    const mathList = planItems.filter(i => i.subjectType === 'math');
+    const compList = planItems.filter(i => i.subjectType === 'comp');
+    const engList = planItems.filter(i => i.subjectType === 'eng');
+    updateTimeSection(mathList, compList, engList, totalTime);
+
+    // ---- Render Resources ----
+    renderResources(planItems);
+
+    // ---- Render Quiz ----
+    renderQuiz(planItems);
+
+    // ---- Countdown ----
+    updateCountdown();
+
+    // ---- Mood ----
+    renderMood();
+
+    // ---- Footer ----
+    document.getElementById('footerTotal').textContent = totalItems;
+
+    // ---- Animate ----
+    observeAnimations();
+  }
+
+  function updateTimeSection(mathItems, compItems, engItems, totalTime) {
+    const mathTime = mathItems.reduce((s,i) => s + i.time, 0);
+    const compTime = compItems.reduce((s,i) => s + i.time, 0);
+    const engTime = engItems.reduce((s,i) => s + i.time, 0);
+
+    document.getElementById('timeSummary').innerHTML = `
+      <div class="time-card math">
+        <div class="time-card-label">📐 高等数学</div>
+        <div class="time-card-value math">${mathTime}<span style="font-size:0.9rem;font-weight:400;"> 分钟</span></div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">${mathItems.length} 项 · 80% 权重</div>
+      </div>
+      <div class="time-card comp">
+        <div class="time-card-label">💻 计算机基础</div>
+        <div class="time-card-value comp">${compTime}<span style="font-size:0.9rem;font-weight:400;"> 分钟</span></div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">${compItems.length} 项 · 7 章全覆盖</div>
+      </div>
+      <div class="time-card eng">
+        <div class="time-card-label">🔤 大学英语</div>
+        <div class="time-card-value eng">${engTime}<span style="font-size:0.9rem;font-weight:400;"> 分钟</span></div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">${engItems.length} 项 · 6 大版块</div>
+      </div>
+    `;
+
+    document.getElementById('totalTimeValue').textContent = totalTime + ' 分钟';
+    const pct = Math.min(100, Math.round((totalTime / 120) * 100));
+    document.getElementById('totalTimeFill').style.width = pct + '%';
+    document.getElementById('statTime').textContent = totalTime;
+
+    const completed = planItems.filter(i => i.completed).length;
+    document.getElementById('statCompleted').textContent = completed;
+
+    // ---- Review Plan Preview ----
+    const reviewSection = document.getElementById('reviewPlanPreview');
+    if (reviewSection) {
+      const today = new Date();
+      const ds = Math.max(0, daysBetween(COURSE_START, today));
+      const mathPhase = getStudyPhase(ds, MATH_CURRICULUM, 3);
+      const mathPasses = mathPhase.totalPasses;
+      const daysPerPass = mathPhase.daysPerPass;
+      const nextPhaseStart = daysPerPass + 1; // Day when phase 2 starts
+      const reviewHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
+          <div style="background:var(--card-bg);border-radius:var(--radius-sm);padding:12px 16px;flex:1;min-width:140px;border:1px solid var(--border-light);">
+            <div style="font-size:0.75rem;color:var(--text-muted);">📖 基础学习</div>
+            <div style="font-size:1.1rem;font-weight:700;color:#D35400;">${daysPerPass}天</div>
+            <div style="font-size:0.72rem;color:var(--text-secondary);">${mathPhase.currentPass === 1 ? '⬅ 进行中' : '已完成'}</div>
+          </div>
+          <div style="background:var(--card-bg);border-radius:var(--radius-sm);padding:12px 16px;flex:1;min-width:140px;border:1px solid var(--border-light);">
+            <div style="font-size:0.75rem;color:var(--text-muted);">🔁 第一轮复习</div>
+            <div style="font-size:1.1rem;font-weight:700;color:#2980B9;">${daysPerPass}天</div>
+            <div style="font-size:0.72rem;color:var(--text-secondary);">${mathPhase.currentPass > 1 ? '⬅ 进行中' : '📅 ' + formatDate(new Date(COURSE_START.getTime() + daysPerPass*86400000)) + ' 起'}</div>
+          </div>
+          <div style="background:var(--card-bg);border-radius:var(--radius-sm);padding:12px 16px;flex:1;min-width:140px;border:1px solid var(--border-light);">
+            <div style="font-size:0.75rem;color:var(--text-muted);">🔄 第二轮复习</div>
+            <div style="font-size:1.1rem;font-weight:700;color:#8E44AD;">${daysPerPass}天</div>
+            <div style="font-size:0.72rem;color:var(--text-secondary);">${mathPhase.currentPass > 2 ? '⬅ 进行中' : '📅 ' + formatDate(new Date(COURSE_START.getTime() + daysPerPass*2*86400000)) + ' 起'}</div>
+          </div>
+          <div style="background:var(--card-bg);border-radius:var(--radius-sm);padding:12px 16px;flex:1;min-width:140px;border:1px solid var(--border-light);">
+            <div style="font-size:0.75rem;color:var(--text-muted);">🏁 冲刺阶段</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--orange-1);">${mathPasses - 3}+ 轮</div>
+            <div style="font-size:0.72rem;color:var(--text-secondary);">${mathPhase.currentPass > 3 ? '⬅ 进行中' : '第4轮起快速轮转'}</div>
+          </div>
+        </div>
+      `;
+      reviewSection.innerHTML = reviewHTML;
+    }
+  }
+
+  function renderResources(planItems) {
+    const grid = document.getElementById('resourceGrid');
+    grid.innerHTML = '';
+
+    // Collect unique chapter names from today's plan
+    const todayChapters = new Set();
+    planItems.forEach(item => {
+      if (item.chapter) todayChapters.add(item.chapter);
+    });
+
+    // Score each resource by how many of its chapters match today's chapters
+    const scored = RESOURCE_DB.map(r => {
+      let score = 0;
+      r.chapters.forEach(ch => {
+        // Check if any today's chapter starts with or equals this resource's chapter
+        todayChapters.forEach(tc => {
+          if (tc === ch || tc.startsWith(ch) || ch.startsWith(tc)) score++;
+        });
+      });
+      return { ...r, score };
+    });
+
+    // Sort by score descending, take top 6 (max 2 per subject)
+    const selected = [];
+    const counts = { math: 0, comp: 0, eng: 0 };
+    scored.sort((a, b) => b.score - a.score).forEach(r => {
+      if (counts[r.type] < 2 && selected.length < 6) {
+        selected.push(r);
+        counts[r.type]++;
+      }
+    });
+
+    // If fewer than 4 resources matched, fill with general ones
+    if (selected.length < 4) {
+      scored.filter(r => r.score === 0).forEach(r => {
+        if (counts[r.type] < 2 && selected.length < 6 && !selected.find(s => s.title === r.title)) {
+          selected.push(r);
+          counts[r.type]++;
+        }
+      });
+    }
+
+    selected.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'resource-card animate-on-scroll ' + r.type;
+      card.innerHTML = `
+        <span class="resource-subject ${r.type}">${r.subject}</span>
+        <div class="resource-title">${r.title}</div>
+        <div class="resource-desc">${r.desc}</div>
+        <a class="resource-link external" href="${r.url}" target="_blank" rel="noopener noreferrer">🔗 前往学习</a>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Show info when no resource matched
+    if (selected.length === 0) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);background:var(--card-bg);border-radius:var(--radius-md);box-shadow:var(--card-shadow);">暂无匹配的今日学习资源，请参考上方通用推荐 🎯</div>';
+    }
+  }
+
+  /* ===== Quiz Module ===== */
+  let quizState = null;
+
+  function renderQuiz(planItems) {
+    const container = document.getElementById('quizContainer');
+    const countEl = document.getElementById('quizCount');
+
+    // Collect today's chapters from plan items
+    const todayChapters = new Set();
+    planItems.forEach(item => {
+      if (item.chapter) todayChapters.add(item.chapter);
+    });
+
+    // Filter matching questions (max 6, min 3)
+    let available = QUESTION_BANK.filter(q => {
+      return Array.from(todayChapters).some(tc => {
+        return tc === q.chapter || tc.startsWith(q.chapter) || q.chapter.startsWith(tc);
+      });
+    });
+
+    // Shuffle and pick up to 5
+    available = available.sort(() => Math.random() - 0.5).slice(0, 5);
+
+    // If not enough matched, supplement from same subject
+    if (available.length < 3) {
+      const subjects = new Set(planItems.map(i => i.subjectType));
+      const fallback = QUESTION_BANK.filter(q => {
+        return Array.from(subjects).some(s => q.type === s) && !available.find(a => a.q === q.q);
+      }).sort(() => Math.random() - 0.5);
+      available = [...available, ...fallback].slice(0, 5);
+    }
+
+    countEl.textContent = '共 ' + available.length + ' 题';
+
+    if (available.length === 0) {
+      container.innerHTML = '<div class="quiz-empty">📭 暂无匹配的练习题，学习新章节后自动出现 ✏️</div>';
+      quizState = null;
+      return;
+    }
+
+    // Initialize quiz state
+    quizState = {
+      questions: available,
+      current: 0,
+      answered: false,
+      selected: -1,
+      results: [], // 'correct' or 'wrong' for each question
+      score: 0,
+      finished: false,
+      // Restore saved state
+      ...(loadQuizState() || {}),
+    };
+
+    renderQuizQuestion();
+  }
+
+  function renderQuizQuestion() {
+    const container = document.getElementById('quizContainer');
+    const state = quizState;
+    if (!state || state.finished) {
+      renderQuizResult();
+      return;
+    }
+
+    const total = state.questions.length;
+    const idx = state.current;
+    const q = state.questions[idx];
+
+    // Build progress dots
+    let dotsHTML = '';
+    for (let i = 0; i < total; i++) {
+      let cls = 'quiz-dot';
+      if (i === idx) cls += ' active';
+      else if (state.results[i] === 'correct') cls += ' correct';
+      else if (state.results[i] === 'wrong') cls += ' wrong';
+      dotsHTML += '<div class="' + cls + '">' + (i+1) + '</div>';
+    }
+
+    // Build options
+    let optsHTML = '';
+    q.opts.forEach((opt, oi) => {
+      let cls = 'quiz-option';
+      if (state.answered && oi === q.ans) cls += ' correct-answer';
+      if (state.answered && oi === state.selected && oi !== q.ans) cls += ' wrong-answer';
+      if (state.selected === oi) cls += ' selected';
+      if (state.answered) cls += ' disabled';
+      optsHTML += '<div class="' + cls + '" data-opt="' + oi + '">' + opt + '</div>';
+    });
+
+    // Feedback
+    let feedbackHTML = '';
+    if (state.answered) {
+      const isCorrect = state.selected === q.ans;
+      feedbackHTML = '<div class="quiz-feedback ' + (isCorrect ? 'correct' : 'wrong') + '">'
+        + (isCorrect ? '✅ 回答正确！' : '❌ 回答错误。正确答案是：' + q.opts[q.ans])
+        + '<br><span style="font-size:0.85rem;opacity:0.85;margin-top:4px;display:inline-block;">💡 ' + q.explain + '</span></div>';
+    }
+
+    container.innerHTML = `
+      <div class="quiz-progress">${dotsHTML}</div>
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span class="quiz-subject ${q.type}">${q.subject}</span>
+          <span class="quiz-chapter">${q.chapter}</span>
+          <span style="margin-left:auto;font-size:0.8rem;color:var(--text-muted);">${idx+1}/${total}</span>
+        </div>
+        <div class="quiz-question">${q.q}</div>
+        <div class="quiz-options">${optsHTML}</div>
+        ${feedbackHTML}
+        <div class="quiz-actions">
+          ${state.answered
+            ? '<button class="quiz-btn quiz-btn-primary" id="quizNextBtn">' + (idx < total - 1 ? '下一题 →' : '查看成绩 🏆') + '</button>'
+            : '<button class="quiz-btn quiz-btn-primary" id="quizSubmitBtn" disabled>提交答案</button>'
+          }
+        </div>
+      </div>
+    `;
+
+    // Bind option clicks
+    if (!state.answered) {
+      document.querySelectorAll('.quiz-option').forEach(el => {
+        el.addEventListener('click', function() {
+          if (quizState.answered) return;
+          quizState.selected = parseInt(this.dataset.opt);
+          document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+          document.getElementById('quizSubmitBtn').disabled = false;
+        });
+      });
+      document.getElementById('quizSubmitBtn').addEventListener('click', submitQuizAnswer);
+    } else {
+      document.getElementById('quizNextBtn').addEventListener('click', nextQuizQuestion);
+    }
+  }
+
+  function submitQuizAnswer() {
+    const state = quizState;
+    if (state.selected < 0) return;
+
+    state.answered = true;
+    const isCorrect = state.selected === state.questions[state.current].ans;
+    state.results[state.current] = isCorrect ? 'correct' : 'wrong';
+    if (isCorrect) state.score++;
+    saveQuizState(state);
+    renderQuizQuestion();
+  }
+
+  function nextQuizQuestion() {
+    const state = quizState;
+    if (state.current < state.questions.length - 1) {
+      state.current++;
+      state.answered = false;
+      state.selected = -1;
+      saveQuizState(state);
+      renderQuizQuestion();
+    } else {
+      state.finished = true;
+      saveQuizState(state);
+      renderQuizQuestion();
+    }
+  }
+
+  function renderQuizResult() {
+    const container = document.getElementById('quizContainer');
+    const state = quizState;
+    if (!state || !state.finished) {
+      container.innerHTML = '<div class="quiz-empty">📭 暂无练习题</div>';
+      return;
+    }
+
+    const total = state.questions.length;
+    const score = state.score;
+    const pct = Math.round((score / total) * 100);
+    let comment = '';
+    if (pct >= 80) comment = '🎉 太棒了！掌握得很好，继续保持！';
+    else if (pct >= 60) comment = '👍 不错！还有提升空间，再复习一遍知识点吧！';
+    else comment = '💪 加油！建议重新学习今天的内容，再做一遍练习。';
+
+    container.innerHTML = `
+      <div class="quiz-card">
+        <div class="quiz-result">
+          <div class="quiz-result-score">${score}/${total}</div>
+          <div class="quiz-result-label">${comment}</div>
+          <div class="quiz-result-detail">正确率 ${pct}% · 共 ${total} 题</div>
+          <div style="margin-top:20px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+            ${state.results.map((r, i) =>
+              '<span style="font-size:0.85rem;padding:4px 12px;border-radius:12px;background:' +
+              (r === 'correct' ? 'rgba(39,174,96,0.1);color:#27AE60' : 'rgba(231,76,60,0.1);color:#E74C3C') +
+              ';">第' + (i+1) + '题 ' + (r === 'correct' ? '✅' : '❌') + '</span>'
+            ).join('')}
+          </div>
+          <div style="margin-top:24px;">
+            <button class="quiz-btn quiz-btn-primary" id="quizRestartBtn">🔄 重新练习</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('quizRestartBtn').addEventListener('click', resetQuiz);
+
+    // Clear saved state
+    localStorage.removeItem('zsb_quiz_state');
+  }
+
+  function resetQuiz() {
+    quizState = null;
+    localStorage.removeItem('zsb_quiz_state');
+    renderQuiz(planItems);
+  }
+
+  function saveQuizState(state) {
+    try {
+      localStorage.setItem('zsb_quiz_state', JSON.stringify({
+        current: state.current,
+        answered: state.answered,
+        selected: state.selected,
+        results: state.results,
+        score: state.score,
+        finished: state.finished,
+        questionIds: state.questions.map(q => q.q),
+      }));
+    } catch(e) {}
+  }
+
+  function loadQuizState() {
+    try {
+      const saved = localStorage.getItem('zsb_quiz_state');
+      if (!saved) return null;
+      const data = JSON.parse(saved);
+      // Verify questions still match by comparing question text
+      if (data.questionIds && data.questionIds.length > 0) {
+        return {
+          current: data.current,
+          answered: data.answered,
+          selected: data.selected,
+          results: data.results || [],
+          score: data.score || 0,
+          finished: data.finished || false,
+        };
+      }
+      return null;
+    } catch(e) { return null; }
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = EXAM_DATE - now;
+    if (diff <= 0) {
+      ['cdDays','cdHours','cdMins','cdSecs'].forEach(id => document.getElementById(id).textContent='0');
+      document.getElementById('countdownMotivation').textContent = '🎉 考试已结束！无论结果如何，努力过就不后悔！';
+      return;
+    }
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const mins = Math.floor((diff%(1000*60*60))/(1000*60));
+    const secs = Math.floor((diff%(1000*60))/1000);
+
+    document.getElementById('cdDays').textContent = days;
+    document.getElementById('cdHours').textContent = hours;
+    document.getElementById('cdMins').textContent = mins;
+    document.getElementById('cdSecs').textContent = secs;
+    document.getElementById('statDays').textContent = days;
+    document.getElementById('examDateLabel').textContent = '2027-04-15';
+
+    const motIdx = getDayOfYear(now) % MOTIVATIONS.length;
+    document.getElementById('countdownMotivation').textContent = MOTIVATIONS[motIdx];
+  }
+
+  /* ===== Mood & Journal ===== */
+  function renderMood() {
+    const todayKey = getTodayKey();
+    const journalData = loadJournal();
+    const todayEntry = journalData.find(e => e.date === todayKey);
+    if (todayEntry && todayEntry.mood) {
+      document.querySelectorAll('.mood-btn').forEach(b => {
+        b.classList.toggle('selected', b.dataset.mood === todayEntry.mood);
+      });
+    }
+    if (todayEntry && todayEntry.text) {
+      document.getElementById('journalText').value = todayEntry.text;
+    }
+    renderJournalList(journalData);
+
+    document.querySelectorAll('.mood-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+    document.getElementById('saveMoodBtn').addEventListener('click', saveMoodEntry);
+    document.getElementById('clearMoodBtn').addEventListener('click', clearMoodEntry);
+  }
+
+  function loadJournal() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY_JOURNAL)) || []; } catch(e){ return []; }
+  }
+  function saveJournal(data) { localStorage.setItem(STORAGE_KEY_JOURNAL, JSON.stringify(data)); }
+
+  function saveMoodEntry() {
+    const todayKey = getTodayKey();
+    const selectedMood = document.querySelector('.mood-btn.selected');
+    const mood = selectedMood ? selectedMood.dataset.mood : '';
+    const text = document.getElementById('journalText').value.trim();
+    if (!mood && !text) { showToast('😅 选个心情或写点什么吧'); return; }
+
+    const journalData = loadJournal();
+    const existingIdx = journalData.findIndex(e => e.date === todayKey);
+    const entry = { date:todayKey, mood:mood||'😐', text:text||'(今日无记录)', timestamp:new Date().toISOString() };
+    if (existingIdx >= 0) journalData[existingIdx] = entry;
+    else journalData.unshift(entry);
+    saveJournal(journalData);
+    renderJournalList(journalData);
+    document.getElementById('moodCount').textContent = journalData.length + ' 条记录';
+    showToast('✅ 今日心情已保存！');
+  }
+
+  function clearMoodEntry() {
+    const todayKey = getTodayKey();
+    const journalData = loadJournal().filter(e => e.date !== todayKey);
+    saveJournal(journalData);
+    renderJournalList(journalData);
+    document.getElementById('journalText').value = '';
+    document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('moodCount').textContent = journalData.length + ' 条记录';
+    showToast('🗑 已清除今日记录');
+  }
+
+  function renderJournalList(data) {
+    const list = document.getElementById('journalList');
+    if (!data || data.length === 0) {
+      list.innerHTML = '<div class="journal-empty">还没有记录，开始你的第一篇学习日记吧 ✍️</div>';
+      document.getElementById('moodCount').textContent = '0 条记录'; return;
+    }
+    document.getElementById('moodCount').textContent = data.length + ' 条记录';
+    list.innerHTML = data.slice(0, 10).map(entry => {
+      const d = new Date(entry.date);
+      const displayDate = formatDate(d);
+      return `<div class="journal-entry animate-on-scroll">
+        <div class="journal-entry-header">
+          <span class="journal-entry-mood">${entry.mood||'😐'}</span>
+          <span class="journal-entry-date">${displayDate}</span>
+        </div>
+        <div class="journal-entry-text">${escapeHtml(entry.text)}</div>
+      </div>`;
+    }).join('');
+    observeAnimations();
+  }
+
+  /* ===== Scroll Animation ===== */
+  function observeAnimations() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+      elements.forEach(el => observer.observe(el));
+    } else {
+      elements.forEach(el => el.classList.add('visible'));
+    }
+  }
+
+  /* ===== Countdown Ticker ===== */
+  setInterval(updateCountdown, 1000);
+
+  /* ===== Nav Scroll Spy ===== */
+  function updateNavActive() {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    let current = '';
+    sections.forEach(section => {
+      if (section.getBoundingClientRect().top <= 120) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateNavActive);
+
+  /* ===== INIT ===== */
+  render();
+
+  /* ===== PWA: Inline Manifest + Service Worker ===== */
+  // Generate manifest.json inline (so the .html file needs no external files)
+  try {
+    const manifest = {
+      name: '🔥 四川专升本 · AI 每日冲刺计划',
+      short_name: '升本冲刺',
+      description: '四川专升本每日学习计划，覆盖高数/英语/计算机三科',
+      start_url: location.href,
+      display: 'standalone',
+      orientation: 'portrait',
+      background_color: '#FFF8F0',
+      theme_color: '#FF6B35',
+      icons: [{ src: document.querySelector('link[rel=icon]').href, sizes: '512x512', type: 'image/svg+xml' }],
+      categories: ['education'],
+      lang: 'zh-CN'
+    };
+    const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = URL.createObjectURL(blob);
+    document.head.appendChild(link);
+  } catch(e) { /* manifest generation not critical */ }
+
+  // Register service worker (only works on HTTPS/localhost; silently ignore file://)
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register(location.href.replace(/[^/]*$/, '') + 'sw.js').catch(() => {});
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
